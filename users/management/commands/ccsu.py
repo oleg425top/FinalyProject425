@@ -1,16 +1,16 @@
 from django.core.management import BaseCommand
 
-from users.models import User, UserRols
+from users.models import User, UserRolls
 
 
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
         admin = User.objects.create(
-            email='admincbv@web.top',
+            email='admin@web.top',
             first_name='Admin',
             last_name='Adminov',
-            role=UserRols.ADMIN,
+            role=UserRolls.ADMIN,
             is_staff=True,
             is_superuser=True,
             is_active=True,
@@ -23,7 +23,7 @@ class Command(BaseCommand):
             email='moderator@web.top',
             first_name='Moderator',
             last_name='Moderatorov',
-            role=UserRols.MODERATOR,
+            role=UserRolls.MODERATOR,
             is_staff=True,
             is_superuser=False,
             is_active=True,
@@ -36,7 +36,7 @@ class Command(BaseCommand):
             email='user@web.top',
             first_name='User',
             last_name='Userov',
-            role=UserRols.USER,
+            role=UserRolls.USER,
             is_staff=True,
             is_superuser=False,
             is_active=True,
