@@ -1,3 +1,31 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
 
-# Create your models here.
+NULLABLE = {'blank': True, 'null': True}
+
+
+class UserRolls(models.TextChoices):
+    ADMIN = 'admin', _('admin')
+    MODERATOR = 'moderator', _('moderator')
+    USER = 'user', _('user')
+
+
+class User(AbstractUser):
+    username = None
+    email = models.EmailField(unique=True, verbose_name='email')
+    role = models.CharField(max_length=9, choices=UserRolls.choices, default=UserRolls.USER)
+    first_name = models.CharField(max_length=150, verbose_name='Имя', default='Аноним')
+    phone = models.CharField(max_length=35, unique=True, verbose_name='phone_number', **NULLABLE)
+    is_active = models.BooleanField(default=True, verbose_name='active')
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    def __str__(self):
+        return f'{self.email}'
+
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
+        ordering = ['id']
