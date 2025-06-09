@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,25 +18,25 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,400i,500,600,700" rel="stylesheet">
 
     <!--== Bootstrap CSS ==-->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="{% static 'assets/css/bootstrap.min.css' %} " rel="stylesheet"/>
     <!--== Themify Icons CSS ==-->
-    <link href="assets/css/themify-icons.css" rel="stylesheet"/>
+    <link href="{% static 'assets/css/themify-icons.css' %} " rel="stylesheet"/>
     <!--== Font-awesome Icons CSS ==-->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet"/>
     <!--== Ionicons CSS ==-->
-    <link href="assets/css/ionicons.min.css" rel="stylesheet"/>
+    <link href="{% static 'assets/css/ionicons.min.css' %}" rel="stylesheet"/>
     <!--== Animate CSS ==-->
-    <link href="assets/css/animate.css" rel="stylesheet"/>
+    <link href="{% static 'assets/css/animate.css' %}" rel="stylesheet"/>
     <!--== Aos CSS ==-->
-    <link href="assets/css/aos.css" rel="stylesheet"/>
+    <link href="{% static 'assets/css/aos.css' %}" rel="stylesheet"/>
     <!--== FancyBox CSS ==-->
-    <link href="assets/css/jquery.fancybox.min.css" rel="stylesheet"/>
+    <link href="{% static 'assets/css/jquery.fancybox.min.css' %}" rel="stylesheet"/>
     <!--== Slicknav CSS ==-->
-    <link href="assets/css/slicknav.css" rel="stylesheet"/>
+    <link href="{% static 'assets/css/slicknav.css' %}" rel="stylesheet"/>
     <!--== Swiper CSS ==-->
-    <link href="assets/css/swiper.min.css" rel="stylesheet"/>
+    <link href="{% static 'assets/css/swiper.min.css' %}" rel="stylesheet"/>
     <!--== Main Style CSS ==-->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
 
 </head>
 
@@ -64,8 +65,8 @@
         <div class="col-5 col-sm-3 col-md-3 col-lg-2 pr-0">
           <div class="header-logo-area">
             <a href="index.html">
-              <img class="logo-main" src="assets/img/logo_2.jpg" alt="Logo" />
-              <img class="logo-light" src="assets/img/logo_2.jpg" alt="Logo" />
+              <img class="logo-main" src="{% static 'assets/img/logo_2.jpg' %}" alt="Logo" />
+              <img class="logo-light" src="{% static 'assets/img/logo_2.jpg' %}" alt="Logo" />
             </a>
           </div>
         </div>
@@ -75,42 +76,7 @@
               <ul class="main-menu nav justify-content-center">
                 <li> <a href="index.html">Главная</a>
                 </li>
-                <li class="has-submenu full-width"><a href="index.html">Магазин</a>
-                  <ul class="submenu-nav submenu-nav-mega">
-                    <li class="mega-menu-item"><a class="srmenu-title" href="#">Cutting Board</a>
-                      <ul>
-                        <li><a href="shop-single-электроинструмент-title1.html">Fish spatula</a></li>
-                        <li><a href="shop-single-электроинструмент-title1.html">Pasta fork</a></li>
-                        <li><a href="shop-single-электроинструмент-title1.html">Bulb baster</a></li>
-                        <li><a href="shop-single-электроинструмент-title1.html">Food mill</a></li>
-                      </ul>
-                    </li>
-                    <li class="mega-menu-item"><a class="srmenu-title" href="#">Stainless steel</a>
-                      <ul>
-                        <li><a href="shop-single-электроинструмент-title1.html">Apple corer</a></li>
-                        <li><a href="shop-single-электроинструмент-title1.html">Vegetable peeler</a></li>
-                        <li><a href="shop-single-электроинструмент-title1.html">Garlic press</a></li>
-                        <li><a href="shop-single-электроинструмент-title1.html">Pizza cutter</a></li>
-                      </ul>
-                    </li>
-                    <li class="mega-menu-item"><a class="srmenu-title" href="#">Marble</a>
-                      <ul>
-                        <li><a href="shop-single-электроинструмент-title1.html">Cheese slicer</a></li>
-                        <li><a href="shop-single-электроинструмент-title1.html">Panini spatula</a></li>
-                        <li><a href="shop-single-электроинструмент-title1.html">Melon baller</a></li>
-                        <li><a href="shop-single-электроинструмент-title1.html">Nutcracker</a></li>
-                      </ul>
-                    </li>
-                    <li class="mega-menu-item"><a class="srmenu-title" href="#">Granite</a>
-                      <ul>
-                        <li><a href="shop-single-электроинструмент-title1.html">Pizza peel</a></li>
-                        <li><a href="shop-single-электроинструмент-title1.html">Mini whisk</a></li>
-                        <li><a href="shop-single-электроинструмент-title1.html">French whisk</a></li>
-                        <li><a href="shop-single-электроинструмент-title1.html">Mixing whisk</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
+            
                 <li class="has-submenu full-width colunm-two position-static"><a href="index.html">Электроинструмент</a>
                   <ul class="submenu-nav submenu-nav-mega">
                     <li class="mega-menu-item"><a class="srmenu-title" href="#">Магазин Pages Layout</a>
@@ -173,7 +139,7 @@
                   <div class="minicart-action">
                     <div class="minicart-item">
                       <div class="thumb">
-                        <img src="assets/img/shop/cart/1.jpg" alt="Alan-Магазин">
+                        <img src="{% static 'assets/img/shop/cart/1.jpg' %}" alt="Alan-Магазин">
                       </div>
                       <div class="content">
                         <h4 class="title"><a href="#/">2. New badge электроинструмент - m / gold</a></h4>
@@ -183,7 +149,7 @@
                     </div>
                     <div class="minicart-item">
                       <div class="thumb">
-                        <img src="assets/img/shop/cart/1.jpg" alt="Alan-Магазин">
+                        <img src="{% static 'assets/img/shop/cart/1.jpg' %}" alt="Alan-Магазин">
                       </div>
                       <div class="content">
                         <h4 class="title"><a href="#/">11. Электроинструмент with video - purple</a></h4>
@@ -231,7 +197,7 @@
             <div class="электроинструмент-item">
               <div class="электроинструмент-thumb">
                 <a href="shop-single-электроинструмент.html">
-                  <img src="assets/img/shop/1.png" alt="Alan-Магазин">
+                  <img src="{% static 'assets/img/shop/1.png' %}" alt="Alan-Магазин">
                   <div class="ribbons">
                     <span class="ribbon ribbon-hot">Sale</span>
                     <span class="ribbon ribbon-onsale align-right">-15%</span>
@@ -264,7 +230,7 @@
             <div class="электроинструмент-item">
               <div class="электроинструмент-thumb">
                 <a href="shop-single-электроинструмент.html">
-                  <img src="assets/img/shop/2.webp" alt="Alan-Магазин">
+                  <img src="{% static 'assets/img/shop/2.webp' %}" alt="Alan-Магазин">
                 </a>
                 <div class="электроинструмент-action">
                   <a class="action-wishlist" href="shop-wishlist.html" title="Wishlist">
@@ -292,7 +258,7 @@
             <div class="электроинструмент-item">
               <div class="электроинструмент-thumb">
                 <a href="shop-single-электроинструмент.html">
-                  <img src="assets/img/shop/3.png" alt="Alan-Магазин">
+                  <img src="{% static 'assets/img/shop/3.png' %}" alt="Alan-Магазин">
                 </a>
                 <div class="электроинструмент-action">
                   <a class="action-wishlist" href="shop-wishlist.html" title="Wishlist">
@@ -320,7 +286,7 @@
             <div class="электроинструмент-item">
               <div class="электроинструмент-thumb">
                 <a href="shop-single-электроинструмент.html">
-                  <img src="assets/img/shop/4.webp" alt="Alan-Магазин">
+                  <img src="{% static 'assets/img/shop/4.webp' %}" alt="Alan-Магазин">
                   <div class="ribbons">
                     <span class="ribbon ribbon-hot">Sale</span>
                     <span class="ribbon ribbon-onsale align-right">-18%</span>
@@ -353,7 +319,7 @@
             <div class="электроинструмент-item">
               <div class="электроинструмент-thumb">
                 <a href="shop-single-электроинструмент.html">
-                  <img src="assets/img/shop/5.png" alt="Alan-Магазин">
+                  <img src="{% static 'assets/img/shop/5.png' %}" alt="Alan-Магазин">
                   <div class="ribbons">
                     <span class="ribbon-soldout">Soldout</span>
                   </div>
@@ -385,7 +351,7 @@
             <div class="электроинструмент-item">
               <div class="электроинструмент-thumb">
                 <a href="shop-single-электроинструмент.html">
-                  <img src="assets/img/shop/6.png" alt="Alan-Магазин">                  
+                  <img src="{% static 'assets/img/shop/6.png' %}" alt="Alan-Магазин">
                   <span class="ribbon ribbon-hot">Sale</span>
                   <span class="ribbon ribbon-onsale align-right">-35%</span>
                 </a>
@@ -424,7 +390,7 @@
             <div class="электроинструмент-item">
               <div class="электроинструмент-thumb">
                 <a href="shop-single-электроинструмент.html">
-                  <img src="assets/img/shop/7.png" alt="Alan-Магазин">
+                  <img src="{% static 'assets/img/shop/7.png' %}" alt="Alan-Магазин">
                 </a>
                 <div class="электроинструмент-action">
                   <a class="action-wishlist" href="shop-wishlist.html" title="Wishlist">
@@ -452,7 +418,7 @@
             <div class="электроинструмент-item">
               <div class="электроинструмент-thumb">
                 <a href="shop-single-электроинструмент.html">
-                  <img src="assets/img/shop/8.png" alt="Alan-Магазин">
+                  <img src="{% static 'assets/img/shop/8.png' %}" alt="Alan-Магазин">
                   <div class="ribbons">
                     <span class="ribbon ribbon-hot">Sale</span>
                     <span class="ribbon ribbon-onsale align-right">-18%</span>
@@ -527,7 +493,6 @@
                   <li><a href="shop-wishlist.html">Wishlist</a></li>
                   <li><a href="about.html">О нас Us</a></li>
                   <li><a href="contact.html">Контакты Us</a></li>
-                  <li><a href="блог.html">Блог</a></li>
                 </ul>
               </nav>
             </div>
@@ -575,7 +540,7 @@
         <!-- Off Canvas Header -->
         <div class="off-canvas-header">
           <div class="logo-area">
-            <a href="index.html"><img src="assets/img/logo.png" alt="Logo" /></a>
+            <a href="index.html"><img src="{% static 'assets/img/logo.png' %}" alt="Logo" /></a>
           </div>
           <div class="close-action">
             <button class="btn-close"><i class="fa fa-close"></i></button>
@@ -601,32 +566,32 @@
 <!--=======================Javascript============================-->
 
 <!--=== Modernizr Min Js ===-->
-<script src="assets/js/modernizr.js"></script>
+<script src="{% static 'assets/js/modernizr.js' %}"></script>
 <!--=== jQuery Min Js ===-->
-<script src="assets/js/jquery-main.js"></script>
+<script src="{% static 'assets/js/jquery-main.js' %}"></script>
 <!--=== jQuery Migration Min Js ===-->
-<script src="assets/js/jquery-migrate.js"></script>
+<script src="{% static 'assets/js/jquery-migrate.js' %}"></script>
 <!--=== Bootstrap Min Js ===-->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
 <!--=== jquery Appear Js ===-->
-<script src="static/assets/js/jquery.appear.js"></script>
+<script src="{% static 'assets/js/jquery.appear.js' %}"></script>
 <!--=== jquery Swiper Min Js ===-->
-<script src="assets/js/swiper.min.js"></script>
+<script src="{% static 'assets/js/swiper.min.js' %}"></script>
 <!--=== jquery Fancybox Min Js ===-->
-<script src="assets/js/fancybox.min.js"></script>
+<script src="{% static 'assets/js/fancybox.min.js' %}"></script>
 <!--=== jquery Aos Min Js ===-->
-<script src="assets/js/aos.min.js"></script>
+<script src="{% static 'assets/js/aos.min.js' %}"></script>
 <!--=== jquery Slicknav Js ===-->
-<script src="assets/js/jquery.slicknav.js"></script>
+<script src="{% static 'assets/js/jquery.slicknav.js' %}"></script>
 <!--=== jquery Countdown Js ===-->
-<script src="assets/js/jquery.countdown.min.js"></script>
+<script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
 <!--=== jquery Wow Min Js ===-->
-<script src="assets/js/wow.min.js"></script>
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
 <!--=== jQuery Zoom Min Js ===-->
-<script src="assets/js/jquery-zoom.min.js"></script>
+<script src="{% static 'assets/js/jquery-zoom.min.js' %}"></script>
 
 <!--=== Custom Js ===-->
-<script src="assets/js/custom.js"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
 
 </body>
 
