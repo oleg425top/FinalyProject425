@@ -12,10 +12,19 @@ class StyleFormMixin:
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 
+class UserForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('email', 'first_name', 'phone',)
+
 
 class UserRegisterForm(StyleFormMixin, UserCreationForm):
     class Meta:
         model = User
         fields = ('email',)
+
+
+class UserLoginForm(StyleFormMixin, AuthenticationForm):
+    pass
 
 
