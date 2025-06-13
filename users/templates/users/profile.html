@@ -1,0 +1,25 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">Мой профиль</div>
+            <div class="card-body">
+                <span class="card-text">Email: {{user.email}}</span><br>
+                <span class="card-text">Имя: {{user.first_name|default:"Не указано"}}</span><br>
+                <span class="card-text">Телефон: {{user.phone|default:"Не указано"}}</span><br>
+                <button class="btn btn-outline-warning">
+                    <a class="btn btn-link" href="{% url 'users:index' %}">Обновить</a>
+                </button>
+                <button class="btn btn-outline-warning">
+                    <a class="btn btn-link" href="{% url 'users:index' %}">Изменить пароль</a>
+                </button>
+                <button class="btn btn-outline-danger">
+                    <a class="btn btn-link" href="{% url 'users:index' %}">Генерация пароля</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
