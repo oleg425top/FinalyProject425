@@ -74,8 +74,10 @@
           <div class="header-align">
             <div class="header-navigation-area">
               <ul class="main-menu nav justify-content-center">
-                <li> <a href="index.html">Главная</a>
-                </li>
+                {% if user.is_authenticated %}
+                <li> <a href="index.html">{{ user }}</a></li>
+                {% endif %}
+                <li> <a href="index.html">Главная</a></li>
 
                 <li class="has-submenu full-width colunm-two position-static"><a href="index.html">Электроинструмент</a>
                   <ul class="submenu-nav submenu-nav-mega">
@@ -122,18 +124,26 @@
               <div class="header-action-usermenu">
                 <div class="icon-usermenu"><i class="ti-settings"></i></div>
                 <ul class="user-menu">
-
-                  <li><a class="p-2 btn btn-success btn-sm " href="/admin">Админка</a></li>
-
-                  <li><a href="account.html">Главная</a></li>
+                  <ul class="list-unstyled">
+                    {% if user.is_superuser %}
+                    <li><a class="p-2 btn btn-success btn-sm " href="/admin">Админка</a></li>
+                    {% endif %}
+                  <li><a href="{% url 'users:index' %}">Главная</a></li>
                   <li><a href="about.html">Бренды</a></li>
                   <li><a href="contact.html">Инструмент</a></li>
                   <li><a href="блог.html"></a></li>
-                  <li><a href="login.html">Login</a></li>
-                  <form method="post" action="{% url 'users:user_logout' %}" >
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger btn-sm">Выход</button>
-                        </form>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'users:profile' %}">Профиль</a></li>
+                    <form method="post" action="{% url 'users:logout' %}" >
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success" >Выход</button>
+                    </form>
+
+                    {% else %}
+                  <li><a href="{% url 'users:login' %}">Войти</a></li>
+                  <li><a href="{% url 'users:register' %}">Регистрация</a></li>
+                    {% endif %}
+
                 </ul>
               </div>
               <div class="header-action-cart">
