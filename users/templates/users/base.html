@@ -77,7 +77,7 @@
                 {% if user.is_authenticated %}
                 <li> <a href="index.html">{{ user }}</a></li>
                 {% endif %}
-                <li> <a href="index.html">Главная</a></li>
+                <li> <a href="{% url 'users:index' %}">Главная</a></li>
 
                 <li class="has-submenu full-width colunm-two position-static"><a href="index.html">Электроинструмент</a>
                   <ul class="submenu-nav submenu-nav-mega">
