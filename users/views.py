@@ -1,9 +1,9 @@
-from django.contrib.auth.views import LogoutView, LoginView
+from django.contrib.auth.views import LogoutView, LoginView, PasswordChangeView
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 from users.models import User
-from users.forms import UserRegisterForm, UserLoginForm, UserForm
+from users.forms import UserRegisterForm, UserLoginForm, UserForm, UserUpdateForm, UserChangePasswordForm
 
 
 def index_view(request):
@@ -47,4 +47,28 @@ class UserProfileView(UpdateView):
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data()
         context_data['title'] = f'Ваш профиль {self.get_object()}'
+        return context_data
+
+class UserUpdateView(UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = 'users/update.html'
+    success_url = reverse_lazy('users:profile')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data()
+        context_data['title'] = f'Обновить профиль {self.get_object()}'
+        return context_data
+
+class UserPasswordChangeView(PasswordChangeView):
+    form_class = UserChangePasswordForm
+    template_name = 'users/password_change.html'
+    success_url = reverse_lazy('users:profile')
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data()
+        context_data['title'] = f'Изменить пароль {self.request.user}'
         return context_data
