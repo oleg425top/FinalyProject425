@@ -10,13 +10,10 @@
                 <span class="card-text">Имя: {{user.first_name|default:"Не указано"}}</span><br>
                 <span class="card-text">Телефон: {{user.phone|default:"Не указано"}}</span><br>
                 <button class="btn btn-outline-warning">
-                    <a class="btn btn-link" href="{% url 'users:index' %}">Обновить</a>
+                    <a class="btn btn-link" href="{% url 'users:update' %}">Обновить</a>
                 </button>
                 <button class="btn btn-outline-warning">
-                    <a class="btn btn-link" href="{% url 'users:index' %}">Изменить пароль</a>
-                </button>
-                <button class="btn btn-outline-danger">
-                    <a class="btn btn-link" href="{% url 'users:index' %}">Генерация пароля</a>
+                    <a class="btn btn-link" href="{% url 'users:change_password' %}">Изменить пароль</a>
                 </button>
             </div>
         </div>
