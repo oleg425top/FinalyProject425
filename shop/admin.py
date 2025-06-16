@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from shop.models import Brand
+
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'logo')
+    list_filter = ('name',)
