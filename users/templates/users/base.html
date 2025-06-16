@@ -124,7 +124,8 @@
                     <li><a href="{% url 'users:profile' %}">Профиль</a></li>
                     <form method="post" action="{% url 'users:logout' %}" >
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-success" >Выход</button>
+                    <button type="submit" class="p-2 btn btn-success btn-sm" style="margin-left: 20px;" >Выход</button>
+
                     </form>
 
                     {% else %}
@@ -132,8 +133,9 @@
                   <li><a href="{% url 'users:register' %}">Регистрация</a></li>
                     {% endif %}
 
-                </ul>
-              </div>
+                  </ul>
+                </div>
+              {% if user.is_authenticated %}
               <div class="header-action-cart">
                 <a class="cart-icon" href="shop-cart.html">
                   <span class="cart-count">2</span>
@@ -171,6 +173,7 @@
                   </div>
                 </div>
               </div>
+              {% endif %}
               <button class="btn-menu d-lg-none">
                 <span></span>
                 <span></span>
