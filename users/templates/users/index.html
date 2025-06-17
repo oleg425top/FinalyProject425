@@ -51,11 +51,20 @@
                 </div>
               </div>
               <!-- End Slide Item -->
+
             </div>
           </div>
         </div>
       </div>
     </section>
     <!--== End Hero Area Wrapper ==-->
+<div class="row" >
+  <br>
+  <br>
+  <br>
+  {% for object in object_list %}
+  {% include 'users/includes/inc_brand.html' with object=object %}
+  {% endfor %}
+</div>
 
 {% endblock %}
