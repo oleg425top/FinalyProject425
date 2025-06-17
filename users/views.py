@@ -2,12 +2,18 @@ from django.contrib.auth.views import LogoutView, LoginView, PasswordChangeView
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
+
+from shop.models import Brand
 from users.models import User
 from users.forms import UserRegisterForm, UserLoginForm, UserForm, UserUpdateForm, UserChangePasswordForm
 
 
 def index_view(request):
-    return render(request, 'users/index.html')
+    context = {
+        'object_list': Brand.objects.all(),
+        'title': 'Магазин электроинструмента - главная'
+    }
+    return render(request, 'users/index.html', context=context)
 
 
 class UserRegisterView(CreateView):
