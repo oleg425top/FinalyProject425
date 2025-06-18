@@ -1,0 +1,30 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content%}
+
+<!--== Start About Area ==-->
+    <section class="about-area about-default-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="about-content">
+              <div class="section-title">
+                <h5 class="subtitle">Добро пожаловать!</h5>
+                <h2 class="title">В наш магазин Электроинструмента!</h2>
+              </div>
+              <p>Добро пожаловать в наш магазин электроинструментов – вашего надежного партнера в мире строительных и
+                ремонтных работ. Мы предлагаем широкий ассортимент высококачественных инструментов, которые помогут вам
+                справиться с любыми задачами, будь то профессиональные строительные проекты или домашние улучшения.</p>
+              <p>Наш магазин был основан с целью предоставить клиентам доступ к лучшим инструментам по доступным ценам.</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="thumb mt-md-60">
+              <img src="{% static 'img/about/1.jpg' %}" alt="Image-Alan">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End About Area ==-->
+{% endblock %}
