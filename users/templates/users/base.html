@@ -103,7 +103,7 @@
                     </li>
                   </ul>
                 </li>
-                <li><a href="about.html">О нас</a></li>
+                <li><a href="{% url 'shop:about' %}">О нас</a></li>
                 <li><a href="contact.html">Контакты</a></li>
               </ul>
             </div>
@@ -124,7 +124,7 @@
                     <li><a href="{% url 'users:profile' %}">Профиль</a></li>
                     <form method="post" action="{% url 'users:logout' %}" >
                     {% csrf_token %}
-                    <button type="submit" class="p-2 btn btn-success btn-sm" style="margin-left: 20px;" >Выход</button>
+                    <button type="submit" class="p-2 btn btn-danger btn-block" style="margin-left: 20px;" >Выход</button>
 
                     </form>
 
