@@ -124,7 +124,7 @@
                     <li><a href="{% url 'users:profile' %}">Профиль</a></li>
                     <form method="post" action="{% url 'users:logout' %}" >
                     {% csrf_token %}
-                    <button type="submit" class="p-2 btn btn-danger btn-block" style="margin-left: 20px;" >Выход</button>
+                    <button type="submit" class="p-2 btn btn-danger btn-block" >Выход</button>
 
                     </form>
 
@@ -134,7 +134,7 @@
                     {% endif %}
 
                   </ul>
-                </div>
+                  </div>
               {% if user.is_authenticated %}
               <div class="header-action-cart">
                 <a class="cart-icon" href="shop-cart.html">
@@ -203,27 +203,15 @@
           <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="widget-item">
               <h4 class="widget-title">О нас Information</h4>
-              <div class="about-widget">
+              <div class="about-area">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud reprhendit in voluptate velit esse exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="widget-item widget-menu-item">
-              <h4 class="widget-title">Information</h4>
-              <nav class="widget-menu-wrap">
-                <ul class="nav-menu nav">
-                  <li><a href="shop-account.html">My Account</a></li>
-                  <li><a href="shop-wishlist.html">Wishlist</a></li>
-                  <li><a href="about.html">О нас Us</a></li>
-                  <li><a href="contact.html">Контакты Us</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+
           <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="widget-item">
-              <h4 class="widget-title">Контакты Us</h4>
+              <h4 class="widget-title">Наши контакты</h4>
               <p class="mb-0">Your current address goes to here,120 example, country.</p>
               <ul class="widget-contact-info">
                 <li class="info-phone"><a href="tel://(008)25425425425487">(008) 254 254 254 25487</a></li>
