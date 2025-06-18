@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from django.views.decorators.cache import cache_page, never_cache
 
@@ -15,4 +17,4 @@ urlpatterns = [
     path('users/profile/', UserProfileView.as_view(), name='profile'),
     path('users/update/', UserUpdateView.as_view(), name='update'),
     path('users/change_password/', UserPasswordChangeView.as_view(), name='change_password'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
