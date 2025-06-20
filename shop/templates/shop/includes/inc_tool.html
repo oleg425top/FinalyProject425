@@ -23,14 +23,7 @@
             <div class="single-product-info">
               <h4 class="title">{{ object.name }}</h4>
               <div class="product-ratting">
-                <div class="ratting-icons">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-o"></i>
-                </div>
-                <div class="ratting-caption">1 Review</div>
+
               </div>
               <div class="prices">
                 <span class="price">${{ object.price }}</span>
@@ -50,10 +43,15 @@
                 <div class="action-bottom">
                   <a class="btn-theme" href="shop-checkout.html">Buy it now</a>
                 </div>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
+        <a href="{% url 'shop:tool_delete' object.pk %}" class="btn btn-danger m-2 float-left">Удалить инструмент</a>
       </div>
     </section>
   </main>
