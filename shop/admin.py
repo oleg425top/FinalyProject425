@@ -7,9 +7,11 @@ from shop.models import Brand, Tool
 class BrandAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'logo')
     list_filter = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(Tool)
-class BrandAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'image', 'price')
+class ToolAdmin(admin.ModelAdmin):
+    list_display = ('brand', 'name', 'description', 'price')
     list_filter = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
