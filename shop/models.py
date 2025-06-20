@@ -24,6 +24,9 @@ class Tool(models.Model):
     quantity = models.PositiveIntegerField(default=0, verbose_name='Количество')
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, verbose_name='Категория')
 
+    def __str__(self):
+        return f'({self.name}.Количество: {self.quantity}'
+
     class Meta:
         verbose_name = 'Инструмент'
         verbose_name_plural = 'Инструменты'
