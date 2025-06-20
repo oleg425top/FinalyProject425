@@ -75,7 +75,7 @@
             <div class="header-navigation-area">
               <ul class="main-menu nav justify-content-center">
                 {% if user.is_authenticated %}
-                <li> <a href="index.html">{{ user }}</a></li>
+                <li> <a href="{% url 'users:profile' %}">{{ user }}</a></li>
                 {% endif %}
                 <li> <a href="{% url 'users:index' %}">Главная</a></li>
 
