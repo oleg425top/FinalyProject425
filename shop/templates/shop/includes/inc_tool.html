@@ -1,0 +1,65 @@
+{% load my_tags %}
+
+<main class="main-content site-wrapper-reveal">
+
+    <!--== Start Shop Area ==-->
+    <section class="product-area shop-single-product">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="single-product-slider">
+              <div class="single-product-thumb">
+                <div class="zoom zoom-hover">
+                  <div class="thumb-item">
+                    <a class="lightbox-image" data-fancybox="gallery" href="#">
+                      <img src="{{object.image|tool_media}}" alt="Image-HasTech">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="single-product-info">
+              <h4 class="title">{{ object.name }}</h4>
+              <div class="product-ratting">
+                <div class="ratting-icons">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-o"></i>
+                </div>
+                <div class="ratting-caption">1 Review</div>
+              </div>
+              <div class="prices">
+                <span class="price">${{ object.price }}</span>
+              </div>
+              <div class="product-number">
+                SKU: <span>{{ object.id }}</span>
+              </div>
+              <p class="product-desc">{{ object.description }}</p>
+              <div class="quick-product-action">
+                <div class="action-top">
+                  <div class="pro-qty">
+                    <input type="text" id="quantity" title="Quantity" value="1" />
+                  </div>
+                  <button class="btn btn-black"><i class="fa fa-opencart"></i>Add to cart</button>
+                  <a class="btn-wishlist" href="#"><i class="ti-heart"></i></a>
+                </div>
+                <div class="action-bottom">
+                  <a class="btn-theme" href="shop-checkout.html">Buy it now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+
+
+
