@@ -5,6 +5,9 @@
     {% include 'shop/includes/inc_tool.html' with object=object %}
     {% endfor %}
 </div>
+<a href="{% url 'shop:tool_create' %}" class="btn btn-outline-primary m-2 float-left">Добавить инструмент</a>
+    <br>
+    <br>
 {% include 'shop/includes/inc_pagination.html' %}
 
 {% endblock %}
