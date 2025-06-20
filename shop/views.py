@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 
 from shop.forms import BrandForms
-from shop.models import Brand
+from shop.models import Brand, Tool
 from users.models import UserRolls
 
 
@@ -42,3 +42,11 @@ class BrandCreateView(LoginRequiredMixin, CreateView):
         self.object.owner = self.request.user
         self.object.save()
         return super().form_valid(form)
+
+class ToolListView(ListView):
+    model = Tool
+    extra_context = {
+        'title': 'Все наши инструменты'
+    }
+    template_name = 'shop/tool_list.html'
+    paginate_by = 3
