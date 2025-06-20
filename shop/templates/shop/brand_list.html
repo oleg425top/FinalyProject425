@@ -5,9 +5,11 @@
 {% include 'shop/includes/inc_brand.html' with object=object %}
 {% endfor %}
 </div>
+{% if user.is_superuser %}
     <a href="{% url 'shop:brand_create' %}" class="btn btn-outline-primary m-2 float-left">Добавить брэнд</a>
     <br>
     <br>
+{% endif %}
 {% include 'shop/includes/inc_pagination.html' %}
 
 {% endblock %}
