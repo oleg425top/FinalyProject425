@@ -26,10 +26,16 @@
 
               </div>
               <div class="prices">
-                <span class="price">${{ object.price }}</span>
+                {% if object.discount %}
+                  <p><s>{{object.price}}</s> $</p>
+                  <p><strong>{{ object.sell_price }} $</strong></p>
+                  <span class="badge bg-warning text-dark">Скидка {{ object.discount }} %</span>
+                {% else %}
+                  <p><strong>{{ object.price }} $</strong></p>
+                {% endif %}
               </div>
               <div class="product-number">
-                SKU: <span>{{ object.id }}</span>
+                SKU: <span>{{ object.display_id }}</span>
               </div>
               <p class="product-desc">{{ object.description }}</p>
               <div class="quick-product-action">
@@ -51,7 +57,11 @@
           </div>
 
         </div>
+        {% if user.is_superuser %}
         <a href="{% url 'shop:tool_delete' object.pk %}" class="btn btn-danger m-2 float-left">Удалить инструмент</a>
+        <a href="{% url 'shop:tool_update' object.pk %}" class="btn btn-outline-primary m-2 float-left">Обновить инструмент</a>
+
+        {% endif %}
       </div>
     </section>
   </main>
