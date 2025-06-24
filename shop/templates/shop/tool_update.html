@@ -1,0 +1,33 @@
+{% extends 'users/base.html' %}
+{% load my_tags %}
+{% block content%}
+<form method="post" enctype="multipart/form-data" class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                {% if object %}
+                Обновите данные инструмента!
+                {% else %}
+                Введите данные инструмента!
+                {% endif %}
+            </div>
+            <img class="card-img-top"
+                 src="{{ tool.image|tool_media }}" width=100%
+                 alt="Card image cap">
+            <div class="card-body">
+                {% csrf_token %}
+                {{ form.as_p}}
+                <input type="submit" class="btn btn-outline-success"
+                value="{% if object %}Сохранить{% else %}Добавить{% endif %}">
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="{url 'shop:tools' %}" class="btn btn-outline-primary"><< Назад</a>
+            {% if object and user.is_superuser %}
+            <a href="{% url 'shop:tool_delete' object.pk %}" class="btn btn-outline-danger float-right">Удалить</a>
+            {% endif %}
+        </div>
+    </div>
+</form>
+
+{% endblock %}
