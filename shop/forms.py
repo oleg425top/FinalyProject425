@@ -13,3 +13,8 @@ class ToolForms(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Tool
         exclude = ('slug',)
+
+class ToolAdminForm(BrandForms):
+    class Meta:
+        model = Tool
+        fields = '__all__'
