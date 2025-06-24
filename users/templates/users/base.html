@@ -79,31 +79,6 @@
                 <li> <a href="{% url 'users:profile' %}">{{ user }}</a></li>
                 {% endif %}
                 <li> <a href="{% url 'users:index' %}">Главная</a></li>
-
-                <li class="has-submenu full-width colunm-two position-static"><a href="index.html">Электроинструмент</a>
-                  <ul class="submenu-nav submenu-nav-mega">
-                    <li class="mega-menu-item"><a class="srmenu-title" href="#">Магазин Pages Layout</a>
-                      <ul>
-                        <li><a href="shop-3-grid.html">Магазин 3 Column</a></li>
-                        <li><a href="shop-4-grid.html">Магазин 4 Column</a></li>
-                        <li><a href="shop.html">Магазин Left Sidebar</a></li>
-                        <li><a href="shop-right-sidebar.html">Магазин Right Sidebar</a></li>
-                        <li><a href="shop-list.html">Магазин Listing View</a></li>
-                        <li><a href="shop-list-left-sidebar.html">Магазин List left Sidebar</a></li>
-                        <li><a href="shop-list-right-sidebar.html">Магазин List Right Sidebar</a></li>
-                      </ul>
-                    </li>
-                    <li class="mega-menu-item"><a class="srmenu-title" href="#">Single Электроинструментs</a>
-                      <ul>
-                        <li><a href="shop-single-электроинструмент.html">Simple Электроинструмент</a></li>
-                        <li><a href="shop-single-электроинструмент-variable.html">Variable Электроинструмент</a></li>
-                        <li><a href="shop-single-электроинструмент-affiliate.html">Affiliate Электроинструмент</a></li>
-                        <li><a href="shop-single-электроинструмент-countdown.html">Countdown Электроинструмент</a></li>
-                        <li><a href="shop-single-электроинструмент-soldout.html">Soldout Электроинструмент</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
                 <li><a href="{% url 'shop:about' %}">О нас</a></li>
                 <li><a href="contact.html">Контакты</a></li>
               </ul>
@@ -180,6 +155,7 @@
   </header>
     <div class="album py-5 bg-light">
         <div class="container">
+
             {% block content %}
             {% endblock %}
         </div>
