@@ -1,12 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.exceptions import PermissionDenied
-from django.http import Http404
+from django.http import Http404, HttpResponseForbidden
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 
-from shop.forms import BrandForms, ToolForms, ToolAdminForm
+from shop.forms import BrandForms, ToolForms, ToolAdminForm, ToolAdminFormCreate
 from shop.models import Brand, Tool
+from shop.utils import slug_generator
 from users.models import UserRolls
 
 
@@ -56,19 +57,29 @@ class ToolListView(ListView):
 
 class ToolCreateView(LoginRequiredMixin, CreateView):
     model = Tool
-    form_class = ToolForms
+    form_class = ToolAdminFormCreate
     template_name = 'shop/tool_create.html'
     extra_context = {
         'title': 'Добавить Инструмент'
     }
     success_url = reverse_lazy('shop:tools')
 
+    # def form_valid(self, form):
+    #     if self.request.user.role != UserRolls.ADMIN:
+    #         raise PermissionDenied()
+    #     self.object = form.save()
+    #     self.object.owner = self.request.user
+    #     self.object.save()
+    #     return super().form_valid(form)
+
     def form_valid(self, form):
-        if self.request.user.role != UserRolls.ADMIN:
-            raise PermissionDenied()
-        self.object = form.save()
-        self.object.owner = self.request.user
-        self.object.save()
+        if self.request.user.role not in [UserRolls.USER, UserRolls.ADMIN]:
+            return HttpResponseForbidden
+        slug_object = form.save()
+        if slug_object.slug == 'temp_slug':
+            slug_object.slug = slug_generator(slug_object.name)
+            slug_object.author = self.request.user
+            slug_object.save()
         return super().form_valid(form)
 
 
