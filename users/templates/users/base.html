@@ -118,14 +118,16 @@
                     <li><a class="p-2 btn btn-success btn-sm " href="/admin">Админка</a></li>
                     {% endif %}
                   <li><a href="{% url 'users:index' %}">Главная</a></li>
-                  <li><a href="about.html">Бренды</a></li>
+                  <li><a href="{% url 'shop:catalog' %}">Бренды</a></li>
                   <li><a href="{% url 'shop:tools' %}">Инструмент</a></li>
                   <li><a href="блог.html"></a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'users:profile' %}">Профиль</a></li>
                     <form method="post" action="{% url 'users:logout' %}" >
                     {% csrf_token %}
-                    <button type="submit" class="p-2 btn btn-danger btn-block" >Выход</button>
+
+                    <button type="submit" class="p-2 btn btn-danger btn-sm" style="margin-left: 15px;">Выход</button>
+
 
                     </form>
 
@@ -139,7 +141,7 @@
               {% if user.is_authenticated %}
               <div class="header-action-cart">
                 <a class="cart-icon" href="shop-cart.html">
-                  <span class="cart-count">2</span>
+                  <span class="cart-count">0</span>
                   <i class="ti-shopping-cart"></i>
                 </a>
                 <div class="cart-dropdown-menu">
@@ -152,16 +154,6 @@
                         <h4 class="title"><a href="#/">2. New badge электроинструмент - m / gold</a></h4>
                         <h6 class="nrbQ">Qty: 1</h6>
                         <p class="price">$80.00</p>
-                      </div>
-                    </div>
-                    <div class="minicart-item">
-                      <div class="thumb">
-                        <img src="{% static 'img/shop/cart/1.jpg' %}" alt="Alan-Магазин">
-                      </div>
-                      <div class="content">
-                        <h4 class="title"><a href="#/">11. Электроинструмент with video - purple</a></h4>
-                        <h6 class="nrbQ">Qty: 1</h6>
-                        <p class="price">$39.00</p>
                       </div>
                     </div>
                   </div>
