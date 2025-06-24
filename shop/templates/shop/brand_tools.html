@@ -1,0 +1,14 @@
+{% extends 'users/base.html'%}
+{% load my_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for object in object_list %}
+        {% include 'shop/includes/inc_tool.html' with object=object %}
+        {% endfor %}
+    </div>
+    {% include 'shop/includes/inc_pagination.html' %}
+    <a href="{% url 'shop:tool_create' %}" class="btn btn-outline-primary m-2 float-left">Добавить инструмент</a>
+
+</div>
+{% endblock %}
