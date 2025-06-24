@@ -7,8 +7,10 @@
         {% include 'shop/includes/inc_tool.html' with object=object %}
         {% endfor %}
     </div>
-    {% include 'shop/includes/inc_pagination.html' %}
-    <a href="{% url 'shop:tool_create' %}" class="btn btn-outline-primary m-2 float-left">Добавить инструмент</a>
 
+    {% if user.is_superuser %}
+    <a href="{% url 'shop:tool_create' %}" class="btn btn-outline-primary m-2 float-left">Добавить инструмент</a>
+    {% endif %}
+    {% include 'shop/includes/inc_pagination.html' %}
 </div>
 {% endblock %}
