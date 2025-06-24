@@ -3,11 +3,11 @@
   <ul class="pagination justify-content-center">
     {% if page_obj.has_previous %}
       <li class="page-item">
-        <a class="page-link prev-link" href="?page={{ page_obj.previous_page_number }}">&lt; Prev</a>
+        <a class="page-link prev-link" href="?page={{ page_obj.previous_page_number }}">&lt; Пред..</a>
       </li>
     {% else %}
       <li class="page-item disabled">
-        <a class="page-link prev-link" aria-hidden="true">&lt; Prev</a>
+        <a class="page-link prev-link" aria-hidden="true">&lt; Пред..</a>
       </li>
     {% endif %}
 
@@ -25,11 +25,11 @@
 
     {% if page_obj.has_next %}
       <li class="page-item">
-        <a class="page-link next-link" href="?page={{ page_obj.next_page_number }}">Next &gt;</a>
+        <a class="page-link next-link" href="?page={{ page_obj.next_page_number }}">След.. &gt;</a>
       </li>
     {% else %}
       <li class="page-item disabled">
-        <a class="page-link next-link" aria-hidden="true">Next &gt;</a>
+        <a class="page-link next-link" aria-hidden="true">След.. &gt;</a>
       </li>
     {% endif %}
   </ul>
