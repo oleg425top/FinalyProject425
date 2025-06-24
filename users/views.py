@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from shop.models import Brand
 from users.models import User
 from users.forms import UserRegisterForm, UserLoginForm, UserForm, UserUpdateForm, UserChangePasswordForm
+from users.services import send_register_email
 
 
 def index_view(request):
@@ -19,11 +20,16 @@ def index_view(request):
 class UserRegisterView(CreateView):
     model = User
     form_class = UserRegisterForm
-    success_url = reverse_lazy('users:index')
+    success_url = reverse_lazy('users:login')
     template_name = 'users/register.html'
     extra_context = {
         'title': 'Создать аккаунт'
     }
+
+    def form_valid(self, form):
+        self.object = form.save()
+        send_register_email(self.object.email)
+        return super().form_valid(form)
 
 
 class UserLogoutView(LogoutView):
