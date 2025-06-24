@@ -58,8 +58,8 @@
 
         </div>
         {% if user.is_superuser %}
-        <a href="{% url 'shop:tool_delete' object.pk %}" class="btn btn-danger m-2 float-left">Удалить инструмент</a>
-        <a href="{% url 'shop:tool_update' object.pk %}" class="btn btn-outline-primary m-2 float-left">Обновить инструмент</a>
+        <a href="{% url 'shop:tool_delete' object.slug %}" class="btn btn-danger m-2 float-left">Удалить инструмент</a>
+        <a href="{% url 'shop:tool_update' object.slug %}" class="btn btn-outline-primary m-2 float-left">Обновить инструмент</a>
 
         {% endif %}
       </div>

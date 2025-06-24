@@ -24,7 +24,7 @@
         <div class="card-footer">
             <a href="{url 'shop:tools' %}" class="btn btn-outline-primary"><< Назад</a>
             {% if object and user.is_superuser %}
-            <a href="{% url 'shop:tool_delete' object.pk %}" class="btn btn-outline-danger float-right">Удалить</a>
+            <a href="{% url 'shop:tool_delete' object.slug %}" class="btn btn-outline-danger float-right">Удалить</a>
             {% endif %}
         </div>
     </div>
