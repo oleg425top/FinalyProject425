@@ -1,4 +1,7 @@
 {% load static %}
+{% load my_tags %}
+{% load carts_tags %}
+{% user_carts request as carts %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -112,31 +115,39 @@
                     {% endif %}
 
                   </ul>
-                  </div>
+                </ul>
+              </div>
               {% if user.is_authenticated %}
               <div class="header-action-cart">
                 <a class="cart-icon" href="shop-cart.html">
-                  <span class="cart-count">0</span>
+                  <span class="cart-count">{{carts.total_quantity}}</span>
                   <i class="ti-shopping-cart"></i>
                 </a>
+
                 <div class="cart-dropdown-menu">
+                  {% for cart in carts %}
                   <div class="minicart-action">
                     <div class="minicart-item">
                       <div class="thumb">
-                        <img src="{% static 'img/shop/cart/1.jpg' %}" alt="Alan-Магазин">
+                        <img src="{{cart.tool.image|tool_media}}" alt={{cart.tool.name}}>
                       </div>
                       <div class="content">
-                        <h4 class="title"><a href="#/">2. New badge электроинструмент - m / gold</a></h4>
-                        <h6 class="nrbQ">Qty: 1</h6>
-                        <p class="price">$80.00</p>
+                        <h4 class="title"><a href="#/">{{cart.tool.name}}</a></h4>
+                        <h6 class="nrbQ">{{cart.quantity}} шт.</h6>
+                        <p class="price">{{cart.tool.sell_price}} $</p>
+                        <div class="shopping-cart-total">
+                          <h4>Total: <span>{{cart.products_price}} $</span></h4>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  {% endfor %}
                   <div class="shopping-cart-total">
-                    <h4>Total <span>$119.00</span></h4>
+                    <h4>Total <span>{{carts.total_price}}</span></h4>
                   </div>
+
                   <div class="shopping-cart-btn">
-                    <a class="btn-theme m-0" href="shop-cart.html">View Cart</a>
+                    <a class="btn-theme m-0" href="{% url 'cart:cart' %}">View Cart</a>
                     <a class="btn-theme m-0" href="shop-checkout.html">Checkout</a>
                   </div>
                 </div>
