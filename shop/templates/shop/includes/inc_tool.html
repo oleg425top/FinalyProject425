@@ -43,7 +43,7 @@
                   <div class="pro-qty">
                     <input type="text" id="quantity" title="Quantity" value="1" />
                   </div>
-                  <button class="btn btn-black"><i class="fa fa-opencart"></i>Add to cart</button>
+                  <a href="{% url 'cart:cart_add' object.slug %}" class="btn btn-black"><i class="fa fa-opencart"></i>Добавить в корзину</a>
                   <a class="btn-wishlist" href="#"><i class="ti-heart"></i></a>
                 </div>
                 <div class="action-bottom">
