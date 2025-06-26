@@ -14,6 +14,7 @@
                     <a class="lightbox-image" data-fancybox="gallery" href="#">
                       <img src="{{object.image|tool_media}}" alt="Image-HasTech">
                     </a>
+
                   </div>
                 </div>
               </div>
@@ -21,9 +22,9 @@
           </div>
           <div class="col-lg-6">
             <div class="single-product-info">
-              <h4 class="title">{{ object.name }}</h4>
-              <div class="product-ratting">
 
+              <h4 class="title"><a href="{% url 'shop:tool_detail' object.slug %}">{{object.name}}</a></h4>
+              <div class="product-ratting">
               </div>
               <div class="prices">
                 {% if object.discount %}
@@ -49,13 +50,9 @@
                 <div class="action-bottom">
                   <a class="btn-theme" href="shop-checkout.html">Buy it now</a>
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
         {% if user.is_superuser %}
         <a href="{% url 'shop:tool_delete' object.slug %}" class="btn btn-danger m-2 float-left">Удалить инструмент</a>
