@@ -1,7 +1,7 @@
 {% load static %}
 {% load my_tags %}
 {% load carts_tags %}
-{% user_carts request as carts %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -118,11 +118,33 @@
                 </ul>
               </div>
               {% if user.is_authenticated %}
+              {% user_carts request as carts %}
               <div class="header-action-cart">
-                <a class="cart-icon" href="shop-cart.html">
+                <a class="cart-icon" href="{% url 'cart:cart' %}">
                   <span class="cart-count">{{carts.total_quantity}}</span>
                   <i class="ti-shopping-cart"></i>
                 </a>
+                <style>
+    .cart-dropdown-menu {
+        max-height: 400px; /* или любая другая высота, которая вам подходит */
+        overflow-y: auto; /* добавляет вертикальную прокрутку */
+        position: relative;
+    }
+
+    .shopping-cart-btn {
+        position: sticky;
+        bottom: 0;
+        background: white; /* или другой цвет фона, чтобы кнопки были видны */
+        padding: 10px;
+        border-top: 1px solid #eee; /* добавляет границу сверху для визуального отделения */
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .shopping-cart-btn .btn-theme {
+        margin: 0 5px;
+    }
+</style>
 
                 <div class="cart-dropdown-menu">
                   {% for cart in carts %}
@@ -132,7 +154,7 @@
                         <img src="{{cart.tool.image|tool_media}}" alt={{cart.tool.name}}>
                       </div>
                       <div class="content">
-                        <h4 class="title"><a href="#/">{{cart.tool.name}}</a></h4>
+                        <h4 class="title">{{cart.tool.name}}</h4>
                         <h6 class="nrbQ">{{cart.quantity}} шт.</h6>
                         <p class="price">{{cart.tool.sell_price}} $</p>
                         <div class="shopping-cart-total">

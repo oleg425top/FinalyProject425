@@ -22,25 +22,22 @@
                     <th class="pro-remove">Remove</th>
                   </tr>
                 </thead>
+                {% for cart in carts %}
                 <tbody>
                   <tr>
+
                     <td class="pro-thumbnail">
-                      <a href="#"><img src="assets/img/shop/details/nav13.jpg" alt="Alan-Shop"></a>
+                      <a href="#"><img src="{{cart.tool.image|tool_media}}" alt={{cart.tool.name}}></a>
                     </td>
                     <td class="pro-title">
-                      <h4><a href="#/">2. New badge product</a></h4>
-                      <span>m / gold</span>
+                      <h4><a href="#/">{{cart.tool.description}}</a></h4>
                     </td>
-                    <td class="pro-price"><span>$80.00</span></td>
-                    <td class="pro-quantity">
-                      <div class="quick-product-action">
-                        <div class="pro-qty">
-                          <input type="text" id="quantity" title="Quantity" value="1" />
-                        </div>
-                      </div>
-                    </td>
-                    <td class="pro-subtotal"><span>$80.00</span></td>
+                    <td class="pro-price"><span>{{cart.tool.sell_price}}</span></td>
+                    <td class="pro-price"><span>{{cart.quantity}}</span></td>
+
+                    <td class="pro-subtotal"><span>${{cart.products_price}}</span></td>
                     <td class="pro-remove"><a href="#/">×</a></td>
+                    {% endfor %}
                   </tr>
                 </tbody>
               </table>
