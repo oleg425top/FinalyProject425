@@ -1,0 +1,13 @@
+{% extends 'users/base.html' %}
+<h4 class="title">{{ object.name }}</h4>
+{% block content %}
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h4 class="display-4 font-weight-bold mt-5 text-danger" >{{ object.brand }}</h4>
+                <p class="lead mt-3">{{ object.brand.description }}</p>
+            </div>
+        </div>
+</div>
+{% include 'shop/includes/inc_tool.html' with object=object %}
+{% endblock %}

@@ -1,9 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.http import Http404, HttpResponseForbidden
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
-from django.views.generic import ListView, CreateView, DeleteView, UpdateView
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
 
 from shop.forms import BrandForms, ToolForms, ToolAdminForm, ToolAdminFormCreate
 from shop.models import Brand, Tool
@@ -81,6 +81,18 @@ class ToolCreateView(LoginRequiredMixin, CreateView):
             slug_object.author = self.request.user
             slug_object.save()
         return super().form_valid(form)
+
+
+class ToolDetailView(DetailView):
+    model = Tool
+    template_name = 'shop/tool_card.html'
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        object_ = self.get_object()
+        context_data['title'] = f'Подробная информация {object_}'
+        # dog_object_increase = get_object_or_404(Tool, pk=object_.pk)
+        return context_data
 
 
 class ToolDeleteView(PermissionRequiredMixin, DeleteView):
