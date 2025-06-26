@@ -125,26 +125,26 @@
                   <i class="ti-shopping-cart"></i>
                 </a>
                 <style>
-    .cart-dropdown-menu {
-        max-height: 400px; /* или любая другая высота, которая вам подходит */
-        overflow-y: auto; /* добавляет вертикальную прокрутку */
-        position: relative;
-    }
+                  .cart-dropdown-menu {
+                    max-height: 400px; /* или любая другая высота, которая вам подходит */
+                    overflow-y: auto; /* добавляет вертикальную прокрутку */
+                    position: relative;
+                  }
 
-    .shopping-cart-btn {
-        position: sticky;
-        bottom: 0;
-        background: white; /* или другой цвет фона, чтобы кнопки были видны */
-        padding: 10px;
-        border-top: 1px solid #eee; /* добавляет границу сверху для визуального отделения */
-        display: flex;
-        justify-content: space-between;
-    }
+                  .shopping-cart-btn {
+                    position: sticky;
+                    bottom: 0;
+                    background: white; /* или другой цвет фона, чтобы кнопки были видны */
+                    padding: 10px;
+                    border-top: 1px solid #eee; /* добавляет границу сверху для визуального отделения */
+                    display: flex;
+                    justify-content: space-between;
+                  }
 
-    .shopping-cart-btn .btn-theme {
-        margin: 0 5px;
-    }
-</style>
+                  .shopping-cart-btn .btn-theme {
+                      margin: 0 5px;
+                  }
+                </style>
 
                 <div class="cart-dropdown-menu">
                   {% for cart in carts %}
