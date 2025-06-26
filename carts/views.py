@@ -27,3 +27,9 @@ def cart_add(request, slug):
             Cart.objects.create(user=request.user, tool=tool, quantity=1)
 
     return redirect(request.META['HTTP_REFERER'])
+
+def cart_remove(request, id):
+    cart = Cart.objects.get(id=id)
+    cart.delete()
+    return redirect(request.META['HTTP_REFERER'])
+
