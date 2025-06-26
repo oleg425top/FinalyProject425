@@ -11,6 +11,7 @@
         <div class="row">
           <div class="col-12">
             <div class="cart-table table-responsive">
+              {% if carts %}
               <table>
                 <thead>
                   <tr>
@@ -41,19 +42,21 @@
                   </tr>
                 </tbody>
               </table>
+              {% endif %}
             </div>
           </div>
           {% if carts %}
           <div class="col-12">
             <div class="cart-buttons">
               <a class="btn-shopping update-cart" href="#/">Update Cart</a>
-              <a class="btn-shopping continue-shopping" href="#/">Continue Shopping</a>
+              <a class="btn-shopping continue-shopping" href="{% url 'shop:tools' %}">Continue Shopping</a>
               <a class="btn-shopping" href="#/">Clear Cart</a>
             </div>
           </div>
           {% else %}
           <a class="display-4 font-weight-bold mt-5 text-danger">Ваша корзина пуста</a>
           {% endif %}
+          {% if carts %}
 
           <div class="col-12">
             <div class="cart-payment">
@@ -78,6 +81,7 @@
                       </tbody>
                     </table>
                     <a class="btn-theme" href="#/">Proceed to Checkout</a>
+                    {% endif %}
                   </div>
                 </div>
               </div>
@@ -85,6 +89,7 @@
           </div>
         </div>
       </div>
+
     </section>
     <!--== End Cart Area Wrapper ==-->
 {% endblock%}
