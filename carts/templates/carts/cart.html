@@ -14,12 +14,12 @@
               <table>
                 <thead>
                   <tr>
-                    <th class="pro-thumbnail">Image</th>
-                    <th class="pro-title">Product</th>
-                    <th class="pro-price">Price</th>
-                    <th class="pro-quantity">Quantity</th>
-                    <th class="pro-subtotal">Total</th>
-                    <th class="pro-remove">Remove</th>
+                    <th class="pro-thumbnail">Изображение</th>
+                    <th class="pro-title">Описание</th>
+                    <th class="pro-price">Цена</th>
+                    <th class="pro-quantity">Кол-во</th>
+                    <th class="pro-subtotal">Итого</th>
+                    <th class="pro-remove">Удалить из корзины</th>
                   </tr>
                 </thead>
                 {% for cart in carts %}
@@ -27,7 +27,7 @@
                   <tr>
 
                     <td class="pro-thumbnail">
-                      <a href="#"><img src="{{cart.tool.image|tool_media}}" alt={{cart.tool.name}}></a>
+                      <a href="{% url 'shop:tool_detail' cart.tool.slug %}"><img src="{{cart.tool.image|tool_media}}" alt={{cart.tool.name}}></a>
                     </td>
                     <td class="pro-title">
                       <h4><a href="#/">{{cart.tool.description}}</a></h4>
@@ -36,13 +36,14 @@
                     <td class="pro-price"><span>{{cart.quantity}}</span></td>
 
                     <td class="pro-subtotal"><span>${{cart.products_price}}</span></td>
-                    <td class="pro-remove"><a href="#/">×</a></td>
+                    <td class="pro-remove"><a href="{% url 'cart:cart_remove' cart.id %}">×</a></td>
                     {% endfor %}
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
+          {% if carts %}
           <div class="col-12">
             <div class="cart-buttons">
               <a class="btn-shopping update-cart" href="#/">Update Cart</a>
@@ -50,6 +51,10 @@
               <a class="btn-shopping" href="#/">Clear Cart</a>
             </div>
           </div>
+          {% else %}
+          <a class="display-4 font-weight-bold mt-5 text-danger">Ваша корзина пуста</a>
+          {% endif %}
+
           <div class="col-12">
             <div class="cart-payment">
               <div class="row">
