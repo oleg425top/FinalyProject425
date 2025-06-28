@@ -68,7 +68,7 @@
       <div class="row align-items-center">
         <div class="col-5 col-sm-3 col-md-3 col-lg-2 pr-0">
           <div class="header-logo-area">
-            <a href="index.html">
+            <a href="{% url 'shop:about' %}">
               <img class="logo-main" src="{% static 'img/logo_2.jpg' %}" alt="Logo" />
               <img class="logo-light" src="{% static 'img/logo_2.jpg' %}" alt="Logo" />
             </a>
@@ -126,7 +126,7 @@
                 </a>
                 <style>
                   .cart-dropdown-menu {
-                    max-height: 400px; /* или любая другая высота, которая вам подходит */
+                    max-height: 600px; /* или любая другая высота, которая вам подходит */
                     overflow-y: auto; /* добавляет вертикальную прокрутку */
                     position: relative;
                   }
