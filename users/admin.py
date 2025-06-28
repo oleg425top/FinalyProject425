@@ -8,5 +8,6 @@ from users.models import User
 class UserAdmin(admin.ModelAdmin):
     list_display = ('pk', 'email', 'first_name', 'role', 'is_active')
     list_filter = ('first_name',)
+    search_fields = ('email',)
 
 

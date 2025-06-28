@@ -12,6 +12,16 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Tool)
 class ToolAdmin(admin.ModelAdmin):
-    list_display = ('brand', 'name', 'description', 'price', 'quantity',)
+    list_display = ('brand', 'name', 'description', 'price', 'quantity', 'discount',)
     list_filter = ('brand',)
+    list_editable = ('discount',)
     prepopulated_fields = {'slug': ('name',)}
+    search_fields = ('name', 'description',)
+    fields = [
+        'name',
+        'brand',
+        'slug',
+        'description',
+        ('price', 'discount'),
+        'quantity',
+    ]
