@@ -1,4 +1,7 @@
+
+
 from django.db import models
+from django.urls import reverse
 
 
 class Brand(models.Model):
@@ -27,6 +30,9 @@ class Tool(models.Model):
 
     def __str__(self):
         return f'({self.name}.Количество: {self.quantity}'
+
+    def get_absolute_url(self):
+        return reverse('shop:tool_detail', kwargs={"slug":self.slug})
 
     def display_id(self):
         return f'Арт: {self.id:05}'
