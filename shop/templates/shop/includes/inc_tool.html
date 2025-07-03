@@ -40,15 +40,10 @@
               </div>
               <p class="product-desc">{{ object.description }}</p>
               <div class="quick-product-action">
+                <p><strong> {{ object.quantity }} :ШТ</strong></p>
                 <div class="action-top">
-                  <div class="pro-qty">
-                    <input type="text" id="quantity" title="Quantity" value="1" />
-                  </div>
+
                   <a href="{% url 'cart:cart_add' object.slug %}" class="btn btn-black"><i class="fa fa-opencart"></i>Добавить в корзину</a>
-                  <a class="btn-wishlist" href="#"><i class="ti-heart"></i></a>
-                </div>
-                <div class="action-bottom">
-                  <a class="btn-theme" href="shop-checkout.html">Buy it now</a>
                 </div>
               </div>
             </div>
