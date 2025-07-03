@@ -23,7 +23,10 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return f'{self.first_name}'
+        if self.first_name != 'Аноним':
+            return f'{self.first_name}'
+        else:
+            return f'{self.email}'
 
     class Meta:
         verbose_name = 'Пользователь'
