@@ -25,3 +25,6 @@ class CartAdmin(admin.ModelAdmin):
 
     def tool_display(self, obj):
             return str(obj.tool.name)
+
+    user_display.short_description = "Пользователь"
+    tool_display.short_description = "Товар"
