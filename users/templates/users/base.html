@@ -1,6 +1,8 @@
 {% load static %}
 {% load my_tags %}
 {% load carts_tags %}
+{% load orders_tags %}
+
 
 
 <!DOCTYPE html>
@@ -90,32 +92,27 @@
 
               <div class="header-action-usermenu">
                 <div class="icon-usermenu"><i class="ti-settings"></i></div>
-                <ul class="user-menu">
-                  <ul class="list-unstyled">
-                    {% if user.is_superuser %}
-                    <li><a class="p-2 btn btn-success btn-sm " href="/admin">Админка</a></li>
-                    {% endif %}
-                  <li><a href="{% url 'users:index' %}">Главная</a></li>
-                  <li><a href="{% url 'shop:catalog' %}">Бренды</a></li>
-                  <li><a href="{% url 'shop:tools' %}">Инструмент</a></li>
-                  <li><a href="блог.html"></a></li>
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'users:profile' %}">Профиль</a></li>
-                    <form method="post" action="{% url 'users:logout' %}" >
-                    {% csrf_token %}
-
-                    <button type="submit" class="p-2 btn btn-danger btn-sm" style="margin-left: 15px;">Выход</button>
-
-
-                    </form>
-
-                    {% else %}
-                  <li><a href="{% url 'users:login' %}">Войти</a></li>
-                  <li><a href="{% url 'users:register' %}">Регистрация</a></li>
-                    {% endif %}
-
+                  <ul class="user-menu">
+                    <ul class="list-unstyled">
+                      {% if user.is_superuser %}
+                      <li><a href="/admin">Админка</a></li>
+                      {% endif %}
+                      <li><a href="{% url 'users:index' %}">Главная</a></li>
+                      <li><a href="{% url 'shop:catalog' %}">Бренды</a></li>
+                      <li><a href="{% url 'shop:tools' %}">Инструмент</a></li>
+                      <li><a href="блог.html"></a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'users:profile' %}">Профиль</a></li>
+                        <form method="post" action="{% url 'users:logout' %}" >
+                          {% csrf_token %}
+                            <button type="submit" class="btn btn-group-sm">Выход</button>
+                        </form>
+                          {% else %}
+                          <li><a href="{% url 'users:login' %}">Войти</a></li>
+                          <li><a href="{% url 'users:register' %}">Регистрация</a></li>
+                          {% endif %}
+                      </ul>
                   </ul>
-                </ul>
               </div>
               {% if user.is_authenticated %}
               {% user_carts request as carts %}

@@ -3,6 +3,7 @@
 {% load static %}
 {% block content %}
 {% load carts_tags %}
+{% load orders_tags %}
 {% user_carts request as carts %}
 {% include "carts/includes/inc_cart.html" %}
 {% endblock%}
