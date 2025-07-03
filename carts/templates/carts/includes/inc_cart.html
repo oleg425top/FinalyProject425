@@ -1,10 +1,12 @@
-
+{% load carts_tags %}
+{% load orders_tags %}
 {% load my_tags %}
 {% load static %}
 {% block content %}
 
 <body>
     <!--== Start Cart Area Wrapper ==-->
+    {% user_carts request as carts %}
     <section class="cart-page-area">
       <div class="container pt-100 pb-100">
         <div class="row">
