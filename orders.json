@@ -1,0 +1,466 @@
+[
+  {
+    "model": "orders.order",
+    "pk": 2,
+    "fields": {
+      "user": 3,
+      "created_timestamp": "2025-07-03T07:37:43.438Z",
+      "phone_number": "9173733474",
+      "requires_delivery": true,
+      "delivery_address": "ghjsdfsdfsdfsdfsd",
+      "payment_on_get": false,
+      "is_paid": false,
+      "status": "В обработке"
+    }
+  },
+  {
+    "model": "orders.order",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "created_timestamp": "2025-07-03T07:43:40.501Z",
+      "phone_number": "9874901869",
+      "requires_delivery": true,
+      "delivery_address": "ghjsdfsdfsdfsdfsd",
+      "payment_on_get": false,
+      "is_paid": false,
+      "status": "В обработке"
+    }
+  },
+  {
+    "model": "orders.order",
+    "pk": 4,
+    "fields": {
+      "user": 5,
+      "created_timestamp": "2025-07-03T08:46:19.628Z",
+      "phone_number": "89174205931",
+      "requires_delivery": true,
+      "delivery_address": "ghjsdfsdfsdfsdfsd",
+      "payment_on_get": true,
+      "is_paid": false,
+      "status": "В обработке"
+    }
+  },
+  {
+    "model": "orders.order",
+    "pk": 5,
+    "fields": {
+      "user": 5,
+      "created_timestamp": "2025-07-03T09:00:19.189Z",
+      "phone_number": "89174205931",
+      "requires_delivery": true,
+      "delivery_address": "ghjsdfsdfsdfsdfsd",
+      "payment_on_get": false,
+      "is_paid": false,
+      "status": "В обработке"
+    }
+  },
+  {
+    "model": "orders.order",
+    "pk": 6,
+    "fields": {
+      "user": 5,
+      "created_timestamp": "2025-07-03T09:16:52.497Z",
+      "phone_number": "89174205931",
+      "requires_delivery": true,
+      "delivery_address": "ghjsdfsdfsdfsdfsd",
+      "payment_on_get": false,
+      "is_paid": false,
+      "status": "В обработке"
+    }
+  },
+  {
+    "model": "orders.order",
+    "pk": 7,
+    "fields": {
+      "user": 5,
+      "created_timestamp": "2025-07-03T09:34:58.762Z",
+      "phone_number": "89174205931",
+      "requires_delivery": true,
+      "delivery_address": "ghjsdfsdfsdfsdfsd",
+      "payment_on_get": false,
+      "is_paid": false,
+      "status": "В обработке"
+    }
+  },
+  {
+    "model": "orders.order",
+    "pk": 8,
+    "fields": {
+      "user": 2,
+      "created_timestamp": "2025-07-03T09:48:32.412Z",
+      "phone_number": "89999999999",
+      "requires_delivery": true,
+      "delivery_address": "ghjsdfsdfsdfsdfsd",
+      "payment_on_get": false,
+      "is_paid": false,
+      "status": "В обработке"
+    }
+  },
+  {
+    "model": "orders.order",
+    "pk": 12,
+    "fields": {
+      "user": 1,
+      "created_timestamp": "2025-07-03T10:04:31.239Z",
+      "phone_number": "89874901869",
+      "requires_delivery": false,
+      "delivery_address": "",
+      "payment_on_get": false,
+      "is_paid": false,
+      "status": "В обработке"
+    }
+  },
+  {
+    "model": "orders.order",
+    "pk": 13,
+    "fields": {
+      "user": 1,
+      "created_timestamp": "2025-07-03T10:30:52.191Z",
+      "phone_number": "89874901869",
+      "requires_delivery": false,
+      "delivery_address": "ghjsdfsdfsdfsdfsd",
+      "payment_on_get": true,
+      "is_paid": false,
+      "status": "В обработке"
+    }
+  },
+  {
+    "model": "orders.order",
+    "pk": 14,
+    "fields": {
+      "user": 1,
+      "created_timestamp": "2025-07-03T10:35:29.028Z",
+      "phone_number": "89874901869",
+      "requires_delivery": true,
+      "delivery_address": "ghjsdfsdfsdfsdfsd",
+      "payment_on_get": true,
+      "is_paid": false,
+      "status": "В обработке"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 4,
+    "fields": {
+      "order": 2,
+      "tool": 1,
+      "name": "GBH 2-26 DRE",
+      "price": "269.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T07:37:43.457Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 5,
+    "fields": {
+      "order": 2,
+      "tool": 2,
+      "name": "GKS 190",
+      "price": "189.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T07:37:43.480Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 6,
+    "fields": {
+      "order": 2,
+      "tool": 7,
+      "name": "ШМ-100/900Э",
+      "price": "85.49",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T07:37:43.496Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 7,
+    "fields": {
+      "order": 3,
+      "tool": 1,
+      "name": "GBH 2-26 DRE",
+      "price": "269.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T07:43:40.513Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 8,
+    "fields": {
+      "order": 3,
+      "tool": 2,
+      "name": "GKS 190",
+      "price": "189.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T07:43:40.526Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 9,
+    "fields": {
+      "order": 3,
+      "tool": 7,
+      "name": "ШМ-100/900Э",
+      "price": "85.49",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T07:43:40.546Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 10,
+    "fields": {
+      "order": 3,
+      "tool": 8,
+      "name": "ТП-16/1000Э",
+      "price": "75.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T07:43:40.563Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 11,
+    "fields": {
+      "order": 4,
+      "tool": 5,
+      "name": "DCD771C2",
+      "price": "143.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T08:46:19.639Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 12,
+    "fields": {
+      "order": 4,
+      "tool": 6,
+      "name": "DCF887M2",
+      "price": "143.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T08:46:19.677Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 13,
+    "fields": {
+      "order": 4,
+      "tool": 3,
+      "name": "9558HN",
+      "price": "149.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T08:46:19.677Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 14,
+    "fields": {
+      "order": 5,
+      "tool": 1,
+      "name": "GBH 2-26 DRE",
+      "price": "269.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T09:00:19.207Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 15,
+    "fields": {
+      "order": 5,
+      "tool": 2,
+      "name": "GKS 190",
+      "price": "189.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T09:00:19.219Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 16,
+    "fields": {
+      "order": 6,
+      "tool": 4,
+      "name": "4350FCT",
+      "price": "110.49",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T09:16:52.519Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 17,
+    "fields": {
+      "order": 6,
+      "tool": 5,
+      "name": "DCD771C2",
+      "price": "143.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T09:16:52.568Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 18,
+    "fields": {
+      "order": 6,
+      "tool": 6,
+      "name": "DCF887M2",
+      "price": "143.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T09:16:52.604Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 19,
+    "fields": {
+      "order": 7,
+      "tool": 1,
+      "name": "GBH 2-26 DRE",
+      "price": "269.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T09:34:58.796Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 20,
+    "fields": {
+      "order": 7,
+      "tool": 2,
+      "name": "GKS 190",
+      "price": "189.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T09:34:58.833Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 21,
+    "fields": {
+      "order": 7,
+      "tool": 3,
+      "name": "9558HN",
+      "price": "149.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T09:34:58.845Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 22,
+    "fields": {
+      "order": 8,
+      "tool": 1,
+      "name": "GBH 2-26 DRE",
+      "price": "269.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T09:48:32.412Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 23,
+    "fields": {
+      "order": 8,
+      "tool": 2,
+      "name": "GKS 190",
+      "price": "189.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T09:48:32.447Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 24,
+    "fields": {
+      "order": 8,
+      "tool": 3,
+      "name": "9558HN",
+      "price": "149.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T09:48:32.462Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 25,
+    "fields": {
+      "order": 12,
+      "tool": 2,
+      "name": "GKS 190",
+      "price": "189.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T10:04:31.256Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 26,
+    "fields": {
+      "order": 13,
+      "tool": 1,
+      "name": "GBH 2-26 DRE",
+      "price": "269.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T10:30:52.221Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 27,
+    "fields": {
+      "order": 13,
+      "tool": 2,
+      "name": "GKS 190",
+      "price": "189.99",
+      "quantity": 2,
+      "created_timestamp": "2025-07-03T10:30:52.236Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 28,
+    "fields": {
+      "order": 13,
+      "tool": 3,
+      "name": "9558HN",
+      "price": "149.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T10:30:52.255Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 29,
+    "fields": {
+      "order": 14,
+      "tool": 1,
+      "name": "GBH 2-26 DRE",
+      "price": "269.99",
+      "quantity": 1,
+      "created_timestamp": "2025-07-03T10:35:29.038Z"
+    }
+  },
+  {
+    "model": "orders.orderitem",
+    "pk": 30,
+    "fields": {
+      "order": 14,
+      "tool": 2,
+      "name": "GKS 190",
+      "price": "189.99",
+      "quantity": 2,
+      "created_timestamp": "2025-07-03T10:35:29.062Z"
+    }
+  }
+]

@@ -1,0 +1,97 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$ixnrCeVaLjteES8mzGpb9F$OpImN9PL+c58gpxKHxoD9PvRxfYe0BEFafoyYlSOXHo=",
+      "last_login": "2025-07-03T09:50:46.387Z",
+      "is_superuser": true,
+      "last_name": "Adminov",
+      "is_staff": true,
+      "date_joined": "2025-07-02T12:51:45.868Z",
+      "email": "admin@web.top",
+      "role": "admin",
+      "first_name": "Admin",
+      "phone": "89874901869",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$dfqElwfo7R2DE7sxWk84l7$WfS1C8Ln7IpMBGRhBeJ086nHUcICNcyjwkgOyXaa4MY=",
+      "last_login": "2025-07-03T09:46:46.060Z",
+      "is_superuser": false,
+      "last_name": "Moderatorov",
+      "is_staff": true,
+      "date_joined": "2025-07-02T12:51:47.491Z",
+      "email": "moderator@web.top",
+      "role": "moderator",
+      "first_name": "Moderator",
+      "phone": null,
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$AyNcK78yYGGNmA9b5Z9qA2$IHtE5TeJS85vrOO6hfzipMzTuPtYXJhwWtCDttKQIq4=",
+      "last_login": "2025-07-03T08:24:35.525Z",
+      "is_superuser": false,
+      "last_name": "Userov",
+      "is_staff": true,
+      "date_joined": "2025-07-02T12:51:48.953Z",
+      "email": "user@web.top",
+      "role": "user",
+      "first_name": "User",
+      "phone": "89999999999",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "qwerty123456",
+      "last_login": null,
+      "is_superuser": false,
+      "last_name": "",
+      "is_staff": false,
+      "date_joined": "2025-07-03T08:02:18Z",
+      "email": "yutut657@mail.ru",
+      "role": "user",
+      "first_name": "Аноним",
+      "phone": null,
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$UH8VRrhcS3dQ6z0HbWRcy8$Gcy2aQXix3V5RPOKk6e4q1keHb+x5KE0tJJsEOwYz4s=",
+      "last_login": "2025-07-03T09:32:57.510Z",
+      "is_superuser": false,
+      "last_name": "",
+      "is_staff": false,
+      "date_joined": "2025-07-03T08:42:23.331Z",
+      "email": "anastasia.nikitina.0608@list.ru",
+      "role": "user",
+      "first_name": "Nastya",
+      "phone": "89174205931",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
