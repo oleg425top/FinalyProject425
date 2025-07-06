@@ -89,7 +89,6 @@
               </ul>
             </div>
             <div class="header-action-area">
-
               <div class="header-action-usermenu">
                 <div class="icon-usermenu"><i class="ti-settings"></i></div>
                   <ul class="user-menu">
@@ -103,10 +102,12 @@
                       <li><a href="блог.html"></a></li>
                         {% if user.is_authenticated %}
                         <li><a href="{% url 'users:profile' %}">Профиль</a></li>
+                      <li>
                         <form method="post" action="{% url 'users:logout' %}" >
                           {% csrf_token %}
-                            <button type="submit" class="btn btn-group-sm">Выход</button>
+                          <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">Выход</a>
                         </form>
+                      </li>
                           {% else %}
                           <li><a href="{% url 'users:login' %}">Войти</a></li>
                           <li><a href="{% url 'users:register' %}">Регистрация</a></li>
@@ -123,17 +124,17 @@
                 </a>
                 <style>
                   .cart-dropdown-menu {
-                    max-height: 600px; /* или любая другая высота, которая вам подходит */
-                    overflow-y: auto; /* добавляет вертикальную прокрутку */
+                    max-height: 600px;
+                    overflow-y: auto;
                     position: relative;
                   }
 
                   .shopping-cart-btn {
                     position: sticky;
                     bottom: 0;
-                    background: white; /* или другой цвет фона, чтобы кнопки были видны */
+                    background: white;
                     padding: 10px;
-                    border-top: 1px solid #eee; /* добавляет границу сверху для визуального отделения */
+                    border-top: 1px solid #eee;
                     display: flex;
                     justify-content: space-between;
                   }
