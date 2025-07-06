@@ -17,6 +17,6 @@ urlpatterns = [
     path('catalog/tools/create', cache_page(1)(ToolCreateView.as_view()), name='tool_create'),
     path('catalog/tools/delete/<slug:slug>/', cache_page(1)(ToolDeleteView.as_view()), name='tool_delete'),
     path('catalog/tools/update/<slug:slug>/', cache_page(1)(ToolUpdateView.as_view()), name='tool_update'),
-    path('catalog/brand/<int:pk>/tools/', cache_page(1)(BrandToolsListView.as_view()), name='brand_tool'),
+    path('catalog/brand/<slug:slug>/tools/', cache_page(1)(BrandToolsListView.as_view()), name='brand_tool'),
 
 ]

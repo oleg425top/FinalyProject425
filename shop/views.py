@@ -148,5 +148,12 @@ class BrandToolsListView(LoginRequiredMixin, ListView):
     extra_context = {'title': 'Инструменты данного брэнда'}
 
     def get_queryset(self):
-        queryset = super().get_queryset().filter(brand_id=self.kwargs.get('pk'))
+        # Получаем слаг бренда из URL
+        brand_slug = self.kwargs.get('slug')
+
+        # Получаем бренд по слагу
+        brand = Brand.objects.get(slug=brand_slug)
+
+        # Фильтруем инструменты по бренду
+        queryset = super().get_queryset().filter(brand=brand)
         return queryset
