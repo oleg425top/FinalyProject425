@@ -61,6 +61,7 @@ class UserProfileView(UpdateView):
         context_data['title'] = f'Ваш профиль {self.get_object()}'
         return context_data
 
+
 class UserUpdateView(UpdateView):
     model = User
     form_class = UserUpdateForm
@@ -74,6 +75,7 @@ class UserUpdateView(UpdateView):
         context_data = super().get_context_data()
         context_data['title'] = f'Обновить профиль {self.get_object()}'
         return context_data
+
 
 class UserPasswordChangeView(PasswordChangeView):
     form_class = UserChangePasswordForm
