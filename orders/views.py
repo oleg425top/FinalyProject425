@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from carts.models import Cart
 from orders.forms import CreateOrderForm
 from orders.models import Order, OrderItem
+from users.services import send_order_email
 
 
 def create_order(request):
@@ -51,6 +52,7 @@ def create_order(request):
                         cart_items.delete()
 
                         messages.success(request, 'Заказ оформлен!')
+                        send_order_email(user.email)
                         return redirect('users:profile')
             except ValidationError as e:
                 print(e)
