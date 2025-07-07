@@ -1,5 +1,7 @@
+from django.contrib import messages
 from django.contrib.auth.views import LogoutView, LoginView, PasswordChangeView
 from django.shortcuts import render
+from django.template.context_processors import request
 from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 
@@ -29,6 +31,7 @@ class UserRegisterView(CreateView):
     def form_valid(self, form):
         self.object = form.save()
         send_register_email(self.object.email)
+        messages.success(self.request, f'{User.email} вы успешно зарегистрировались!!')
         return super().form_valid(form)
 
 
@@ -37,6 +40,10 @@ class UserLogoutView(LogoutView):
     extra_context = {
         'title': 'Выход из аккаунта'
     }
+
+    def dispatch(self, request, *args, **kwargs):
+        messages.success(request, f"{request.user.first_name}, Вы вышли из аккаунта")
+        return super().dispatch(request, *args, **kwargs)
 
 
 class UserLoginView(LoginView):
