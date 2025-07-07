@@ -47,21 +47,18 @@ def create_order(request):
                             )
                             tool.quantity -= quantity
                             tool.save()
-
-                        # Очистить корзину пользователя после создания заказа
                         cart_items.delete()
 
                         messages.success(request, 'Заказ оформлен!')
                         send_order_email(user.email)
                         return redirect('users:profile')
             except ValidationError as e:
-                print(e)
                 messages.success(request, str(e))
                 return redirect('orders:create_order')
     else:
         initial = {
             'first_name': request.user.first_name,
-            'phone_number':request.user.phone,
+            'phone_number': request.user.phone,
             'email': request.user.email,
         }
 
