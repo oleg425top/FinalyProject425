@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.exceptions import PermissionDenied
+from django.db.models import Q
 from django.http import Http404, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
@@ -48,11 +49,33 @@ class BrandCreateView(LoginRequiredMixin, CreateView):
 
 class ToolListView(ListView):
     model = Tool
+    slug_url_kwarg = "brand_slug"
     extra_context = {
         'title': 'Все наши инструменты'
     }
     template_name = 'shop/tool_list.html'
     paginate_by = 3
+
+    def get_queryset(self):
+        category_slug = self.kwargs.get(self.slug_url_kwarg)
+        on_sale = self.request.GET.get("on_sale")
+        order_by = self.request.GET.get("order_by")
+        tools = super().get_queryset()
+        query = self.request.GET.get('q')
+        if query:
+            tools = Tool.objects.filter(Q(description__icontains=query))
+        else:
+            tools = super().get_queryset().order_by('id')
+            if not tools.exists():
+                raise Http404()
+
+        if on_sale:
+            tools = tools.filter(discount__gt=0)
+
+        if order_by and order_by != "default":
+            tools = tools.order_by(order_by)
+        print(category_slug)
+        return tools
 
 
 class ToolCreateView(LoginRequiredMixin, CreateView):
@@ -142,7 +165,7 @@ class ToolUpdateView(LoginRequiredMixin, UpdateView):
         return dog_form_class
 
 
-class BrandToolsListView(LoginRequiredMixin, ListView):
+class BrandToolsListView(ListView):
     model = Tool
     template_name = 'shop/brand_tools.html'
     extra_context = {'title': 'Инструменты данного брэнда'}
