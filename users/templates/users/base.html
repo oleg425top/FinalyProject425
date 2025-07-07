@@ -75,16 +75,23 @@
               <img class="logo-light" src="{% static 'img/logo_2.jpg' %}" alt="Logo" />
             </a>
           </div>
+
         </div>
+
         <div class="col-7 col-sm-9 col-md-9 col-lg-10">
           <div class="header-align">
             <div class="header-navigation-area">
               <ul class="main-menu nav justify-content-center">
+                <form class="d-flex" role="search" action="" method="get">
+                  <input class="form-control me-2" type="search" name="q" placeholder="Поиск" aria-label="Search">
+                  <button class="btn btn-warning text-white" type="submit">Найти</button>
+                </form>
                 {% if user.is_authenticated %}
-                <li> <a href="{% url 'users:profile' %}">{{ user }}</a></li>
+                <li><a href="{% url 'users:profile' %}"> {{ user }}</a></li>
                 {% endif %}
                 <li> <a href="{% url 'users:index' %}">Главная</a></li>
                 <li><a href="{% url 'shop:about' %}">О нас</a></li>
+                <li><a href="{% url 'shop:catalog' %}">Инструменты</a></li>
                 <li><a href="contact.html">Контакты</a></li>
               </ul>
             </div>
