@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.http import Http404, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
-from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView, TemplateView
 
 from shop.forms import BrandForms, ToolForms, ToolAdminForm, ToolAdminFormCreate
 from shop.models import Brand, Tool
@@ -12,12 +12,21 @@ from shop.utils import slug_generator
 from users.models import UserRolls
 
 
-def about_view(request):
-    context = {
-        'title': 'Электроинструмент - о нас',
-    }
+class AboutView(TemplateView):
+    template_name = 'shop/about.html'
 
-    return render(request, 'shop/about.html', context=context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Электроинструмент - о нас'
+        return context
+
+
+# def about_view(request):
+#     context = {
+#         'title': 'Электроинструмент - о нас',
+#     }
+#
+#     return render(request, 'shop/about.html', context=context)
 
 
 class BrandListView(ListView):

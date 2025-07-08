@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.views import LogoutView, LoginView, PasswordChangeView
 from django.shortcuts import render
 from django.template.context_processors import request
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, TemplateView
 from django.urls import reverse_lazy
 
 from shop.models import Brand
@@ -11,12 +11,22 @@ from users.forms import UserRegisterForm, UserLoginForm, UserForm, UserUpdateFor
 from users.services import send_register_email
 
 
-def index_view(request):
-    context = {
-        'object_list': Brand.objects.all(),
-        'title': 'Магазин электроинструмента - главная'
-    }
-    return render(request, 'users/index.html', context=context)
+class IndexView(TemplateView):
+    template_name = 'users/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Магазин электроинструмента - главная'
+        context['content'] = 'Магазин электроинструментов'
+        return context
+
+
+# def index_view(request):
+#     context = {
+#         'object_list': Brand.objects.all(),
+#         'title': 'Магазин электроинструмента - главная'
+#     }
+#     return render(request, 'users/index.html', context=context)
 
 
 class UserRegisterView(CreateView):

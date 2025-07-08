@@ -2,13 +2,13 @@ from django.urls import path
 from django.views.decorators.cache import cache_page, never_cache
 
 from shop.apps import ShopConfig
-from shop.views import BrandListView, BrandCreateView, about_view, ToolListView, ToolCreateView, ToolDeleteView, \
+from shop.views import BrandListView, BrandCreateView, AboutView, ToolListView, ToolCreateView, ToolDeleteView, \
     ToolUpdateView, BrandToolsListView, ToolDetailView
 
 app_name = ShopConfig.name
 
 urlpatterns = [
-    path('about/', about_view, name='about'),
+    path('about/', cache_page(60)(AboutView.as_view()), name='about'),
     path('catalog/brands/', cache_page(1)(BrandListView.as_view()), name='catalog'),
 
     path('catalog/brands/create/', BrandCreateView.as_view(), name='brand_create'),
