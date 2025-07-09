@@ -48,7 +48,6 @@ def create_order(request):
                             tool.quantity -= quantity
                             tool.save()
                         cart_items.delete()
-
                         messages.success(request, 'Заказ оформлен!')
                         send_order_email(user.email)
                         return redirect('users:profile')
