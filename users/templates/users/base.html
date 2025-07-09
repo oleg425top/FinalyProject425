@@ -101,23 +101,24 @@
                   <ul class="user-menu">
                     <ul class="list-unstyled">
                       {% if user.is_superuser %}
-                      <li><a href="/admin">Админка</a></li>
+                      <li><a href="/admin" class="h5">Админка</a></li>
                       {% endif %}
-                      <li><a href="{% url 'users:index' %}">Главная</a></li>
-                      <li><a href="{% url 'shop:catalog' %}">Бренды</a></li>
-                      <li><a href="{% url 'shop:tools' %}">Инструмент</a></li>
+                      <li><a href="{% url 'users:index' %}" class="h5">Главная</a></li>
+                      <li><a href="{% url 'shop:catalog' %}" class="h5">Бренды</a></li>
+                      <li><a href="{% url 'shop:tools' %}" class="h5">Инструмент</a></li>
                       <li><a href="блог.html"></a></li>
                         {% if user.is_authenticated %}
-                        <li><a href="{% url 'users:profile' %}">Профиль</a></li>
+                      <li><a href="{% url 'users:profile' %}" class="h5">Профиль</a></li>
                       <li>
                         <form method="post" action="{% url 'users:logout' %}" >
                           {% csrf_token %}
-                          <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">Выход</a>
+                          <a href="#" onclick="event.preventDefault(); this.closest('form').submit();"
+                             class="h5">Выход</a>
                         </form>
                       </li>
                           {% else %}
-                          <li><a href="{% url 'users:login' %}">Войти</a></li>
-                          <li><a href="{% url 'users:register' %}">Регистрация</a></li>
+                      <li><a href="{% url 'users:login' %}" class="h5">Войти</a></li>
+                      <li><a href="{% url 'users:register' %}" class="h5">Регистрация</a></li>
                           {% endif %}
                       </ul>
                   </ul>
