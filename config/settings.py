@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'shop',
     'carts',
     'orders',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -159,7 +160,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 LOGIN_REDIRECT_URL = 'users:index'
-# LOGOUT_REDIRECT_URL = 'dogs:index'
 
 CACHE_ENABLED = os.getenv('CACHE_ENABLED') == 'True'
 if CACHE_ENABLED:
