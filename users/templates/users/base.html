@@ -86,9 +86,7 @@
                   <input class="form-control me-2" type="search" name="q" placeholder="Поиск" aria-label="Search">
                   <button class="btn btn-warning text-white" type="submit">Найти</button>
                 </form>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'users:profile' %}"> {{ user }}</a></li>
-                {% endif %}
+
                 <li> <a href="{% url 'users:index' %}">Главная</a></li>
                 <li><a href="{% url 'shop:about' %}">О нас</a></li>
                 <li><a href="{% url 'shop:tools' %}">Инструменты</a></li>
@@ -97,7 +95,11 @@
             </div>
             <div class="header-action-area">
               <div class="header-action-usermenu">
-                <div class="icon-usermenu"><i class="ti-settings"></i></div>
+                <div class="icon-usermenu"><i class="ti-settings"></i>
+                  {% if user.is_authenticated %}
+                  <li><a href="{% url 'users:profile' %}"> {{ user }}</a></li>
+                  {% endif %}
+                </div>
                   <ul class="user-menu">
                     <ul class="list-unstyled">
                       {% if user.is_superuser %}
