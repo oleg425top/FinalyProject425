@@ -3,8 +3,9 @@
 {% load carts_tags %}
 {% load orders_tags %}
 <div class="row">
-    <div class="col-12">
-    <div class="col-lg-12">
+    <div class="col-10">
+        <div class="col-md-3 col-sm-2"></div>
+        <div class="col-md-6">
         <div class="card">
             <div class="card-header">Мой профиль</div>
             <div class="card-body">
@@ -19,14 +20,16 @@
                 </button>
             </div>
         </div>
+        </div>
+    </div>
 
-
-<!-- Корзина -->
-            {% user_carts request as carts %}
-        <div class="card">
-            <div class="col-md-12">
+    <!-- Корзина -->
+    {% user_carts request as carts %}
+    <div class="card">
+        <div class="card-header"><h3 class="text-center mb-4">Корзина</h3></div>
+        <div class="col-md-12">
+            <div class="card-body">
                 <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
-                    <h3 class="text-center mb-4">Корзина</h3>
                     <div class="container" id="cart-items-container">
                         <!-- Разметка корзины -->
                         {% include "carts/includes/inc_cart.html" %}
@@ -35,16 +38,20 @@
                 </div>
             </div>
         </div>
-            <!-- Оформленные заказы -->
-            {% user_orders request as orders %}
-        <div class="card">
-            <div class="col-md-12">
-                <div class="bg-white p-4 mb-4 mx-2 rounded custom-shadow">
-                    <h3 class="text-center mb-4">Мои заказы</h3>
-                    <!-- Разметка заказов -->
-                    <div class="container">
-                        <div class="accordion" id="accordionExample">
-                            {% for order in orders %}
+    </div>
+    <!-- Оформленные заказы -->
+    {% user_orders request as orders %}
+    <div class="card">
+        <div class="card-header"><h3 class="text-center mb-4">Мои заказы</h3></div>
+        <div class="col-md-12">
+            <div class="bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+
+                <!-- Разметка заказов -->
+                <div class="container">
+
+                    <div class="accordion" id="accordionExample">
+                        {% for order in orders %}
+                        <div class="col-md-auto">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading{{ order.id }}">
                                     <button class="accordion-button {% if order != orders.0 %}collapsed{% endif %}"
@@ -52,42 +59,60 @@
                                             data-bs-target="#collapse{{ order.id }}" aria-expanded="false"
                                             aria-controls="collapse{{ order.id }}">
                                         Заказ № {{ order.id }} - {{ order.created_timestamp }} | Статус: <strong
-                                            class="mx-2">{{order.status}}</strong>
+                                            class="mx-2">{{ order.status }}</strong>
                                     </button>
                                 </h2>
                                 <div id="collapse{{ order.id }}"
                                      class="accordion-collapse collapse {% if order == orders.0 %}show{% endif %}"
                                      aria-labelledby="heading{{ order.id }}" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <table class="table table-light table-hover text-dark">
-                                            <thead>
-                                            <tr>
-                                                <th>Товар</th>
-                                                <th>Количество</th>
-                                                <th>Цена</th>
-                                                <th>Общая стоимость</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for item in order.orderitem_set.all %}
-                                            <tr>
-                                                <td><a class="text-dark" href="">{{ item.tool.name }}</a></td>
-                                                <td>{{ item.quantity }}</td>
-                                                <td>{{ item.price }}</td>
-                                                <td>{{ item.products_price }}</td>
-                                            </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
+                                        <div class="table-responsive">
+                                            <table class="table table-responsive table-light table-hover  text-dark">
+                                                <thead>
+                                                <tr>
+                                                    <th>Товар</th>
+                                                    <th>Количество</th>
+                                                    <th>Цена</th>
+                                                    <th>Общая стоимость</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for item in order.orderitem_set.all %}
+                                                <tr>
+                                                    <td><a class="text-dark" href="">{{ item.tool.name }}</a></td>
+                                                    <td>{{ item.quantity }}</td>
+                                                    <td>{{ item.price }}</td>
+                                                    <td>{{ item.products_price }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        {% if not order.is_paid %}
+                                        <div class="text-end mt-3">
+                                            <a href="{% url 'payments:process_payment' order.id %}"
+                                               class="btn btn-success">
+                                                Оплатить
+                                            </a>
+                                        </div>
+                                        {% else %}
+                                        <div class="text-end mt-3">
+                                            <span class="badge bg-success fs-6">Оплачено</span>
+                                        </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
-                            {% endfor %}
                         </div>
+                        {% endfor %}
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+
+
+</div>
 {% endblock %}
