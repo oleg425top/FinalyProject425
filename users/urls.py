@@ -7,6 +7,8 @@ from users.apps import UsersConfig
 from users.views import UserRegisterView, UserLogoutView, UserLoginView, UserProfileView, UserUpdateView, \
     UserPasswordChangeView, IndexView
 
+"""Модуль URL-маршрутов для приложения пользователей."""
+
 app_name = UsersConfig.name
 
 urlpatterns = [

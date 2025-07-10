@@ -13,23 +13,18 @@ from users.models import UserRolls
 
 
 class AboutView(TemplateView):
+    """Отображает страницу с информацией о компании."""
     template_name = 'shop/about.html'
 
     def get_context_data(self, **kwargs):
+        """Добавляет данные в контекст для отображения на странице."""
         context = super().get_context_data(**kwargs)
         context['title'] = 'Электроинструмент - о нас'
         return context
 
 
-# def about_view(request):
-#     context = {
-#         'title': 'Электроинструмент - о нас',
-#     }
-#
-#     return render(request, 'shop/about.html', context=context)
-
-
 class BrandListView(ListView):
+    """Отображает список всех брендов."""
     model = Brand
     extra_context = {
         'title': 'Все наши брэнды'
@@ -39,6 +34,7 @@ class BrandListView(ListView):
 
 
 class BrandCreateView(LoginRequiredMixin, CreateView):
+    """Представление для создания нового бренда. Требует авторизации."""
     model = Brand
     form_class = BrandForms
     template_name = 'shop/brand_create.html'
@@ -48,6 +44,7 @@ class BrandCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('shop:catalog')
 
     def form_valid(self, form):
+        """Проверяет валидность формы и сохраняет объект, если пользователь имеет нужные права."""
         if self.request.user.role == UserRolls.USER:
             raise PermissionDenied()
         self.object = form.save()
@@ -57,6 +54,7 @@ class BrandCreateView(LoginRequiredMixin, CreateView):
 
 
 class ToolListView(ListView):
+    """Отображает список всех инструментов с возможностью фильтрации и поиска."""
     model = Tool
     slug_url_kwarg = "brand_slug"
     extra_context = {
@@ -66,6 +64,7 @@ class ToolListView(ListView):
     paginate_by = 3
 
     def get_queryset(self):
+        """Фильтрует и упорядочивает инструменты на основе параметров запроса."""
         category_slug = self.kwargs.get(self.slug_url_kwarg)
         on_sale = self.request.GET.get("on_sale")
         order_by = self.request.GET.get("order_by")
@@ -88,6 +87,7 @@ class ToolListView(ListView):
 
 
 class ToolCreateView(LoginRequiredMixin, CreateView):
+    """Представление для создания нового инструмента. Требует авторизации."""
     model = Tool
     form_class = ToolAdminFormCreate
     template_name = 'shop/tool_create.html'
@@ -96,15 +96,8 @@ class ToolCreateView(LoginRequiredMixin, CreateView):
     }
     success_url = reverse_lazy('shop:tools')
 
-    # def form_valid(self, form):
-    #     if self.request.user.role != UserRolls.ADMIN:
-    #         raise PermissionDenied()
-    #     self.object = form.save()
-    #     self.object.owner = self.request.user
-    #     self.object.save()
-    #     return super().form_valid(form)
-
     def form_valid(self, form):
+        """Проверяет валидность формы и сохраняет объект, если пользователь имеет нужные права."""
         if self.request.user.role not in [UserRolls.USER, UserRolls.ADMIN]:
             return HttpResponseForbidden
         slug_object = form.save()
@@ -116,10 +109,12 @@ class ToolCreateView(LoginRequiredMixin, CreateView):
 
 
 class ToolDetailView(DetailView):
+    """Отображает детальную информацию об инструменте."""
     model = Tool
     template_name = 'shop/tool_card.html'
 
     def get_context_data(self, **kwargs):
+        """Добавляет данные в контекст для отображения на странице."""
         context_data = super().get_context_data(**kwargs)
         object_ = self.get_object()
         context_data['title'] = f'Подробная информация {object_}'
@@ -128,6 +123,7 @@ class ToolDetailView(DetailView):
 
 
 class ToolDeleteView(PermissionRequiredMixin, DeleteView):
+    """Представление для удаления инструмента. Требует специальных прав доступа."""
     model = Tool
     template_name = 'shop/tool_delete.html'
     success_url = reverse_lazy('shop:tools')
@@ -135,6 +131,7 @@ class ToolDeleteView(PermissionRequiredMixin, DeleteView):
     permission_denied_message = 'У вас нет нужных прав'
 
     def get_context_data(self, **kwargs):
+        """Добавляет данные в контекст для отображения на странице."""
         context_data = super().get_context_data(**kwargs)
         object_ = self.get_object()
         context_data['title'] = f'Удалить инструмент {object_}'
@@ -142,50 +139,46 @@ class ToolDeleteView(PermissionRequiredMixin, DeleteView):
 
 
 class ToolUpdateView(LoginRequiredMixin, UpdateView):
+    """Представление для обновления информации об инструменте. Требует авторизации."""
     model = Tool
     form_class = ToolForms
     template_name = 'shop/tool_update.html'
     success_url = reverse_lazy('shop:tools')
 
     def get_context_data(self, **kwargs):
+        """Добавляет данные в контекст для отображения на странице."""
         context_data = super().get_context_data(**kwargs)
         object_ = self.get_object()
         print(object_)
         context_data['title'] = f'Изменить инструмент {object_}'
         return context_data
 
-    # def get_success_url(self):
-    #     return reverse('shop:tools', args=[self.kwargs.get('pk')])
-
     def get_object(self, queryset=None):
+        """Получает объект для редактирования."""
         self.object = super().get_object(queryset)
-        # if self.object.owner != self.request.user and not self.request.user.is_staff:
-        #     raise Http404
         return self.object
 
     def get_form_class(self):
-        dog_forms = {
+        """Возвращает класс формы в зависимости от роли пользователя."""
+        tool_forms = {
             UserRolls.ADMIN: ToolAdminForm,
             UserRolls.MODERATOR: ToolForms,
             UserRolls.USER: ToolForms,
         }
         user_role = self.request.user.role
-        dog_form_class = dog_forms[user_role]
-        return dog_form_class
+        tool_form_class = tool_forms[user_role]
+        return tool_form_class
 
 
 class BrandToolsListView(ListView):
+    """Отображает список инструментов определенного бренда."""
     model = Tool
     template_name = 'shop/brand_tools.html'
     extra_context = {'title': 'Инструменты данного брэнда'}
 
     def get_queryset(self):
-        # Получаем слаг бренда из URL
+        """Фильтрует инструменты по бренду на основе слага из URL."""
         brand_slug = self.kwargs.get('slug')
-
-        # Получаем бренд по слагу
         brand = Brand.objects.get(slug=brand_slug)
-
-        # Фильтруем инструменты по бренду
         queryset = super().get_queryset().filter(brand=brand)
         return queryset

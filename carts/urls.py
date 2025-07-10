@@ -4,6 +4,7 @@ from carts import views
 from carts.apps import CartsConfig
 from carts.views import UserCartView
 
+"""Модуль URL-маршрутов для приложения корзины."""
 app_name = CartsConfig.name
 
 urlpatterns = [

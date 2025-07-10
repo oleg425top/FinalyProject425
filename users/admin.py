@@ -8,10 +8,9 @@ from users.models import User
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
+    """Административный интерфейс для управления пользователями."""
     list_display = ('pk', 'email', 'first_name', 'role', 'is_active')
     list_filter = ('first_name',)
     search_fields = ('email',)
 
     inlines = [CartTabAdmin, OrderTabularAdmin]
-
-

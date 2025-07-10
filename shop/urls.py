@@ -5,6 +5,8 @@ from shop.apps import ShopConfig
 from shop.views import BrandListView, BrandCreateView, AboutView, ToolListView, ToolCreateView, ToolDeleteView, \
     ToolUpdateView, BrandToolsListView, ToolDetailView
 
+"""Модуль URL-маршрутов для приложения магазина."""
+
 app_name = ShopConfig.name
 
 urlpatterns = [

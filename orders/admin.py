@@ -2,10 +2,9 @@ from django.contrib import admin
 
 from orders.models import Order, OrderItem
 
-# admin.site.register(Order)
-# admin.site.register(OrderItem)
 
 class OrderItemTabularAdmin(admin.TabularInline):
+    """Интерфейс для редактирования элементов заказа в виде таблицы."""
     model = OrderItem
     fields = "tool", "name", "price", "quantity"
     search_fields = (
@@ -17,6 +16,7 @@ class OrderItemTabularAdmin(admin.TabularInline):
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
+    """Административный интерфейс для управления элементами заказа."""
     list_display = "order", "tool", "name", "price", "quantity"
     search_fields = (
         "order",
@@ -26,6 +26,7 @@ class OrderItemAdmin(admin.ModelAdmin):
 
 
 class OrderTabularAdmin(admin.TabularInline):
+    """Интерфейс для редактирования заказов в виде таблицы."""
     model = Order
     fields = (
         "requires_delivery",
@@ -47,6 +48,7 @@ class OrderTabularAdmin(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
+    """Административный интерфейс для управления заказами."""
     list_display = (
         "id",
         "user",

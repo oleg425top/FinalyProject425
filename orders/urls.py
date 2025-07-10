@@ -3,6 +3,7 @@ from django.urls import path
 from orders import views
 from orders.apps import OrdersConfig
 
+"""Модуль URL-маршрутов для приложения заказов."""
 app_name = OrdersConfig.name
 
 urlpatterns = [

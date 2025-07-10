@@ -10,6 +10,8 @@ from django.contrib.auth import password_validation
 
 
 class StyleFormMixin:
+    """Миксин для стилизации форм, добавляющий CSS-класс 'form-control' ко всем полям формы."""
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
@@ -17,28 +19,39 @@ class StyleFormMixin:
 
 
 class UserForm(StyleFormMixin, forms.ModelForm):
+    """Форма для редактирования информации пользователя."""
+
     class Meta:
         model = User
         fields = ('email', 'first_name', 'phone',)
 
 
 class UserRegisterForm(StyleFormMixin, UserCreationForm):
+    """Форма для регистрации нового пользователя."""
+
     class Meta:
         model = User
         fields = ('email',)
 
 
 class UserLoginForm(StyleFormMixin, AuthenticationForm):
+    """Форма для аутентификации пользователя."""
     pass
 
 
 class UserUpdateForm(StyleFormMixin, forms.ModelForm):
+    """Форма для обновления информации пользователя."""
+
     class Meta:
         model = User
         fields = ('email', 'first_name', 'phone',)
 
+
 class UserChangePasswordForm(StyleFormMixin, PasswordChangeForm):
+    """Форма для изменения пароля пользователя с валидацией."""
+
     def clean_new_password2(self):
+        """Валидация нового пароля и проверка на совпадение паролей."""
         password1 = self.cleaned_data.get('new_password1')
         password2 = self.cleaned_data.get('new_password2')
         validate_password(password1)
