@@ -1,5 +1,6 @@
 {% extends "users/base.html" %}
 {% block content %}
+{% include "payments/includes/inc_credit_card.html" %}
 
 <form method="post">
     <div class="col-6">
@@ -8,7 +9,7 @@
             <div class="card-body">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">Оплатить</button>
+                <button class="btn btn-warning" type="submit">Оплатить</button>
             </div>
         </div>
     </div>
