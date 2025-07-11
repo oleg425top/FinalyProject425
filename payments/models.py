@@ -3,6 +3,7 @@ from orders.models import Order
 
 
 class Payment(models.Model):
+    """Модель платежа, связанная с заказом, содержащая информацию о транзакции и статусе оплаты."""
     order = models.OneToOneField(Order, on_delete=models.CASCADE, verbose_name="Заказ")
     amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Сумма")
     is_successful = models.BooleanField(default=False, verbose_name="Успешно")
@@ -14,4 +15,5 @@ class Payment(models.Model):
         verbose_name_plural = "Оплаты"
 
     def __str__(self):
+        """Возвращает строковое представление платежа с указанием статуса."""
         return f"Оплата заказа №{self.order.pk} - {'Успешно' if self.is_successful else 'Неуспешно'}"
