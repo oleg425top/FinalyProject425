@@ -17,6 +17,15 @@ def send_register_email(email):
     )
 
 
+def send_new_password(email):
+    send_mail(
+        subject='Вы успешно изменили пароль',
+        message=f'Ваш пароль был изменен',
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[email, ]
+    )
+
+
 def send_order_email(email):
     """
         Отправляет электронное письмо с подтверждением оформления заказа.
