@@ -1,0 +1,64 @@
+.credit-card-form {
+    color: rgb(218, 145, 35);
+    padding: 30px;
+    margin: 50px auto;
+    width: 600px;
+    background-color: rgb(206, 113, 41);
+    border-radius: 5px;
+}
+
+.credit-card-title {
+    background-color: rgb(224, 109, 15);
+    box-shadow: 14px 6px 10px rgb(10, 88, 85);
+    color: white;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.credit-card-input {
+    border: none;
+    border-radius: 5px;
+    border-bottom: 2px solid rgb(11, 131, 125);
+    padding: 5px;
+    background-color: rgb(116, 214, 214);
+    transition: 0.5s;
+    width: 95%;
+}
+
+.credit-card-input:hover {
+    transform: scale(1.05);
+    background-color: rgb(180, 235, 235);
+    box-shadow: 14px 6px 10px rgb(10, 88, 85);
+}
+
+.credit-card-date {
+    display: flex;
+    margin-top: 20px;
+}
+
+.credit-card-date > div {
+    margin-right: 10px;
+}
+
+.credit-card-date-logo img {
+    width: 115px;
+}
+
+.credit-card-date-logo {
+    display: flex;
+    align-items: flex-end;
+}
+
+.col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.col-md-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.card-number-input {
+    width: 70%;
+}
