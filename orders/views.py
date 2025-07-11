@@ -13,11 +13,13 @@ from users.services import send_order_email
 
 
 class CreateOrderView(LoginRequiredMixin, FormView):
+    """ Представление для создания заказа. Требует авторизации пользователя."""
     template_name = 'orders/create_order.html'
     form_class = CreateOrderForm
     success_url = reverse_lazy('users:profile')
 
     def get_initial(self):
+        """ Инициализирует форму начальными данными пользователя."""
         initial = super().get_initial()
         initial['first_name'] = self.request.user.first_name
         initial['email'] = self.request.user.email
@@ -25,6 +27,7 @@ class CreateOrderView(LoginRequiredMixin, FormView):
         return initial
 
     def form_valid(self, form):
+        """ Обрабатывает валидную форму, создавая заказ и очищая корзину."""
         try:
             with transaction.atomic():
                 user = self.request.user
@@ -68,10 +71,12 @@ class CreateOrderView(LoginRequiredMixin, FormView):
             return redirect('orders:create_order')
 
     def form_invalid(self, form):
+        """ Обрабатывает невалидную форму, выводя сообщение об ошибке."""
         messages.error(self.request, 'Заполните поля заново')
         return redirect('orders:create_order')
 
     def get_context_data(self, **kwargs):
+        """ Добавляет данные в контекст для отображения на странице создания заказа."""
         context = super().get_context_data(**kwargs)
         context['title'] = 'Оформление заказа'
         context['order'] = True
