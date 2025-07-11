@@ -15,6 +15,7 @@ class Brand(models.Model):
     class Meta:
         verbose_name = 'Брэнд'
         verbose_name_plural = 'Брэнды'
+        ordering = ("id",)
 
 
 class Tool(models.Model):
@@ -49,3 +50,4 @@ class Tool(models.Model):
     class Meta:
         verbose_name = 'Инструмент'
         verbose_name_plural = 'Инструменты'
+        ordering = ("id",)
