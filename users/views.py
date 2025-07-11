@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from shop.models import Brand
 from users.models import User
 from users.forms import UserRegisterForm, UserLoginForm, UserForm, UserUpdateForm, UserChangePasswordForm
-from users.services import send_register_email
+from users.services import send_register_email, send_new_password
 
 
 class IndexView(TemplateView):
@@ -110,3 +110,9 @@ class UserPasswordChangeView(PasswordChangeView):
         context_data = super().get_context_data()
         context_data['title'] = f'Изменить пароль {self.request.user}'
         return context_data
+
+    def form_valid(self, form):
+        """ Проверяет форму на валидность. Сохраняет пользователя. Отправляет сообщение о смене пароля на почту."""
+        user = form.save()
+        send_new_password(user.email)
+        return super().form_valid(form)
