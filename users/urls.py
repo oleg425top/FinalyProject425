@@ -12,7 +12,6 @@ from users.views import UserRegisterView, UserLogoutView, UserLoginView, UserPro
 app_name = UsersConfig.name
 
 urlpatterns = [
-                  # path('', cache_page(1)(index_view), name='index'),
                   path('', cache_page(1)(IndexView.as_view()), name='index'),
                   path('users/register/', UserRegisterView.as_view(), name='register'),
                   path('users/logout/', UserLogoutView.as_view(), name='logout'),
