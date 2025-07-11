@@ -1,9 +1,9 @@
 .credit-card-form {
-    color: rgb(218, 145, 35);
+    color: rgb(10, 88, 85);
     padding: 30px;
     margin: 50px auto;
     width: 600px;
-    background-color: rgb(206, 113, 41);
+    background-color: rgb(41, 197, 197);
     border-radius: 5px;
 }
 
@@ -60,5 +60,5 @@
 }
 
 .card-number-input {
-    width: 70%;
+    width: 70%; /* Уменьшаем ширину поля для номера карты */
 }
