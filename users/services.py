@@ -39,3 +39,7 @@ def send_order_email(email):
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[email, ]
     )
+
+
+def send_message(name, email, message):
+    pass
