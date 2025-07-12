@@ -5,7 +5,7 @@ from django.views.decorators.cache import cache_page, never_cache
 
 from users.apps import UsersConfig
 from users.views import UserRegisterView, UserLogoutView, UserLoginView, UserProfileView, UserUpdateView, \
-    UserPasswordChangeView, IndexView, ContactView
+    UserPasswordChangeView, IndexView, ContactsView
 
 """Модуль URL-маршрутов для приложения пользователей."""
 
@@ -13,7 +13,7 @@ app_name = UsersConfig.name
 
 urlpatterns = [
                   path('', cache_page(1)(IndexView.as_view()), name='index'),
-                  path('contacts/', cache_page(1)(ContactView.as_view()), name='contacts'),
+                  path('contacts/', ContactsView.as_view(), name='contacts'),
                   path('users/register/', UserRegisterView.as_view(), name='register'),
                   path('users/logout/', UserLogoutView.as_view(), name='logout'),
                   path('users/login/', UserLoginView.as_view(), name='login'),
