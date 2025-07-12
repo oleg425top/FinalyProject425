@@ -84,11 +84,12 @@
           <div class="header-align">
             <div class="header-navigation-area">
               <ul class="main-menu nav justify-content-center">
+                {% if request.path == '/shop/catalog/tools/' %}
                 <form class="d-flex" role="search" action="" method="get">
                   <input class="form-control me-2" type="search" name="q" placeholder="Поиск" aria-label="Search">
                   <button class="btn btn-warning text-white" type="submit">Найти</button>
                 </form>
-
+                {% endif %}
                 <li> <a href="{% url 'users:index' %}">Главная</a></li>
                 <li><a href="{% url 'shop:about' %}">О нас</a></li>
                 <li><a href="{% url 'shop:tools' %}">Инструменты</a></li>
