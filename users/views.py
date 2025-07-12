@@ -23,6 +23,18 @@ class IndexView(TemplateView):
         return context
 
 
+class ContactView(TemplateView):
+    """Отображает страницу с контактами магазина."""
+    template_name = 'users/contacts.html'
+
+    def get_context_data(self, **kwargs):
+        """Добавляет данные в контекст для отображения на главной странице."""
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Контакты'
+        context['content'] = 'Наши данные для связи '
+        return context
+
+
 class UserRegisterView(CreateView):
     """Представление для регистрации нового пользователя."""
     model = User

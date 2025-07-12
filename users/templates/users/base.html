@@ -92,7 +92,7 @@
                 <li> <a href="{% url 'users:index' %}">Главная</a></li>
                 <li><a href="{% url 'shop:about' %}">О нас</a></li>
                 <li><a href="{% url 'shop:tools' %}">Инструменты</a></li>
-                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="{% url 'users:contacts' %}">Контакты</a></li>
               </ul>
             </div>
             <div class="header-action-area">
@@ -104,7 +104,7 @@
                 </div>
                   <ul class="user-menu">
                     <ul class="list-unstyled">
-                      {% if user.is_superuser %}
+                      {% if user.is_superuser or user.role == 'moderator' %}
                       <li><a href="/admin" class="h5">Админка</a></li>
                       {% endif %}
                       <li><a href="{% url 'users:index' %}" class="h5">Главная</a></li>
