@@ -21,7 +21,7 @@ def send_new_password(email):
     """ Отправляет письмо с уведомлением об изменении пароля на указанный адрес электронной почты. """
     send_mail(
         subject='Вы успешно изменили пароль',
-        message=f'Ваш пароль был изменен',
+        message='Ваш пароль был изменен',
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[email, ]
     )

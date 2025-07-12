@@ -1,6 +1,5 @@
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse, reverse_lazy
+from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
 from orders.models import Order
@@ -38,7 +37,7 @@ class ProcessPaymentView(FormView):
     def form_valid(self, form):
         """Обрабатывает валидную форму, создавая платеж и обновляя заказ."""
         order = self.get_order()
-        payment = Payment.objects.create(
+        Payment.objects.create(
             order=order,
             amount=sum([item.products_price() for item in order.orderitem_set.all()]),
             is_successful=True,

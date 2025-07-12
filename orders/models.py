@@ -37,7 +37,7 @@ class Order(models.Model):
 
     def __str__(self):
         """Возвращает строковое представление заказа."""
-        if self.user.first_name == None:
+        if self.user.first_name is None:
             return f"Заказ № {self.pk} | Покупатель: Аноним ({self.user.email})"
         else:
             return f"Заказ № {self.pk} | Покупатель: {self.user.first_name} ({self.user.email})"

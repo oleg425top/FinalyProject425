@@ -1,5 +1,4 @@
 from django.urls import path
-from . import views
 from .apps import PaymentsConfig
 from .views import ProcessPaymentView, PaymentSuccessView
 

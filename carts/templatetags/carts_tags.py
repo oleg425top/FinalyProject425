@@ -4,6 +4,7 @@ from orders.models import Order
 
 register = template.Library()
 
+
 @register.simple_tag()
 def user_orders(request):
     if request.user.is_authenticated:
