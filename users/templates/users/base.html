@@ -107,6 +107,7 @@
                     <ul class="list-unstyled">
                       {% if user.is_superuser or user.role == 'moderator' %}
                       <li><a href="/admin" class="h5">Админка</a></li>
+                      <li><a href="{% url 'orders:order_statistics' %}" class="h5">Статистика</a></li>
                       {% endif %}
                       <li><a href="{% url 'users:index' %}" class="h5">Главная</a></li>
                       <li><a href="{% url 'shop:catalog' %}" class="h5">Бренды</a></li>

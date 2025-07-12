@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ValidationError
 from django.db import transaction
+from django.db.models import Sum, F, Count
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import FormView
@@ -81,3 +82,43 @@ class CreateOrderView(LoginRequiredMixin, FormView):
         context['title'] = 'Оформление заказа'
         context['order'] = True
         return context
+
+
+def order_statistics(request):
+    """Собирает и возвращает статистику по заказам для отображения на сайте."""
+    total_orders = Order.objects.count()
+    paid_orders = Order.objects.filter(is_paid=True).count()
+    unpaid_orders = Order.objects.filter(is_paid=False).count()
+    total_sales = OrderItem.objects.aggregate(total=Sum(F('price') * F('quantity')))['total'] or 0
+
+    top_products = (
+        OrderItem.objects.values('name')
+        .annotate(total_quantity=Sum('quantity'))
+        .order_by('-total_quantity')[:5]
+    )
+
+    with_delivery = Order.objects.filter(requires_delivery=True).count()
+    without_delivery = Order.objects.filter(requires_delivery=False).count()
+
+    delivery_stats = {
+        'with_delivery': with_delivery,
+        'without_delivery': without_delivery,
+    }
+
+    status_counts = (
+        Order.objects
+        .values('status')
+        .annotate(count=Count('id'))
+        .order_by()  # отменяем ordering из модели, чтобы избежать ошибки
+    )
+
+    context = {
+        'total_orders': total_orders,
+        'paid_orders': paid_orders,
+        'unpaid_orders': unpaid_orders,
+        'total_sales': total_sales,
+        'top_products': top_products,
+        'delivery_stats': delivery_stats,
+        'status_counts': status_counts,
+    }
+    return render(request, 'orders/statistics.html', context)

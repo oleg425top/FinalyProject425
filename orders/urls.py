@@ -8,4 +8,5 @@ app_name = OrdersConfig.name
 
 urlpatterns = [
     path('create_order/', views.CreateOrderView.as_view(), name='create_order'),
+    path('statistics/', views.order_statistics, name='order_statistics'),
 ]
