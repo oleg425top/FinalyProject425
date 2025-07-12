@@ -1,14 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView, LoginView, PasswordChangeView
 from django.shortcuts import render
-from django.template.context_processors import request
-from django.views.generic import CreateView, UpdateView, TemplateView
+from django.views.generic import CreateView, UpdateView, TemplateView, View
 from django.urls import reverse_lazy
 
-from shop.models import Brand
 from users.models import User
-from users.forms import UserRegisterForm, UserLoginForm, UserForm, UserUpdateForm, UserChangePasswordForm
-from users.services import send_register_email, send_new_password
+from users.forms import UserRegisterForm, UserLoginForm, UserForm, UserUpdateForm, UserChangePasswordForm, ContactsForm
+from users.services import send_register_email, send_new_password, send_message
 
 
 class IndexView(TemplateView):
@@ -23,16 +21,27 @@ class IndexView(TemplateView):
         return context
 
 
-class ContactView(TemplateView):
-    """Отображает страницу с контактами магазина."""
+class ContactsView(View):
+    """ Класс для обработки формы обратной связи. """
     template_name = 'users/contacts.html'
+    form_class = ContactsForm
 
-    def get_context_data(self, **kwargs):
-        """Добавляет данные в контекст для отображения на главной странице."""
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Контакты'
-        context['content'] = 'Наши данные для связи '
-        return context
+    def get(self, request, *args, **kwargs):
+        """ Обрабатывает GET-запросы для отображения формы обратной связи. """
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        """ Обрабатывает POST-запросы для отправки данных формы. """
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            send_message(
+                form.cleaned_data['name'],
+                form.cleaned_data['email'],
+                form.cleaned_data['message']
+            )
+            return render(request, self.template_name, {'success': 1, 'form': form})
+        return render(request, self.template_name, {'form': form})
 
 
 class UserRegisterView(CreateView):
