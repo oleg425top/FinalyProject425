@@ -4,59 +4,62 @@
 
     <!--== Start Shop Area ==-->
     <section class="product-area shop-single-product">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="single-product-slider">
-              <div class="single-product-thumb">
-                <div class="zoom zoom-hover">
-                  <div class="thumb-item">
-                    <a class="lightbox-image" data-fancybox="gallery" href="#">
-                      <img src="{{object.image|tool_media}}" alt="Image-HasTech">
-                    </a>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="single-product-slider">
+                        <div class="single-product-thumb">
+                            <div class="zoom zoom-hover">
+                                <div class="thumb-item">
+                                    <a class="lightbox-image" data-fancybox="gallery" href="#">
+                                        <img src="{{object.image|tool_media}}" alt="Image-HasTech">
+                                    </a>
 
-                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="single-product-info">
+                <div class="col-lg-6">
+                    <div class="single-product-info">
 
-              <h4 class="title"><a href="{% url 'shop:tool_detail' object.slug %}">{{object.name}}</a></h4>
-              <div class="product-ratting">
-              </div>
-              <div class="prices">
-                {% if object.discount %}
-                  <p><s>{{object.price}}</s> $</p>
-                  <p><strong>{{ object.sell_price }} $</strong></p>
-                  <span class="badge bg-warning text-dark">Скидка {{ object.discount }} %</span>
-                {% else %}
-                  <p><strong>{{ object.price }} $</strong></p>
-                {% endif %}
-              </div>
-              <div class="product-number">
-                <span>{{ object.display_id }}</span>
-              </div>
-              <p class="product-desc">{{ object.description }}</p>
-              <div class="quick-product-action">
-                <p><strong> {{ object.quantity }} :ШТ</strong></p>
-                <div class="action-top">
+                        <h4 class="title"><a href="{% url 'shop:tool_detail' object.slug %}">{{object.name}}</a></h4>
+                        <div class="product-ratting">
+                        </div>
+                        <div class="prices">
+                            {% if object.discount %}
+                            <p><s>{{object.price}}</s> $</p>
+                            <p><strong>{{ object.sell_price }} $</strong></p>
+                            <span class="badge bg-warning text-dark">Скидка {{ object.discount }} %</span>
+                            {% else %}
+                            <p><strong>{{ object.price }} $</strong></p>
+                            {% endif %}
+                        </div>
+                        <div class="product-number">
+                            <span>{{ object.display_id }}</span>
+                        </div>
+                        <p class="product-desc">{{ object.description }}</p>
+                        <div class="quick-product-action">
+                            <p><strong> {{ object.quantity }} :ШТ</strong></p>
+                            <div class="action-top">
 
-                  <a href="{% url 'cart:cart_add' object.slug %}" class="btn btn-black"><i class="fa fa-opencart"></i>Добавить в корзину</a>
+                                <a href="{% url 'cart:cart_add' object.slug %}" class="btn btn-black"><i
+                                        class="fa fa-opencart"></i>Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+            {% if user.is_superuser or user.role == 'moderator' %}
+            <a href="{% url 'shop:tool_delete' object.slug %}" class="btn btn-danger m-2 float-left">Удалить
+                инструмент</a>
+            <a href="{% url 'shop:tool_update' object.slug %}" class="btn btn-outline-primary m-2 float-left">Обновить
+                инструмент</a>
+
+            {% endif %}
         </div>
-        {% if user.is_superuser %}
-        <a href="{% url 'shop:tool_delete' object.slug %}" class="btn btn-danger m-2 float-left">Удалить инструмент</a>
-        <a href="{% url 'shop:tool_update' object.slug %}" class="btn btn-outline-primary m-2 float-left">Обновить инструмент</a>
-
-        {% endif %}
-      </div>
     </section>
-  </main>
+</main>
 
 
 
