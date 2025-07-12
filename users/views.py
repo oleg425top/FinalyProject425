@@ -37,7 +37,7 @@ class UserRegisterView(CreateView):
         """Обрабатывает валидную форму регистрации и отправляет письмо с подтверждением."""
         self.object = form.save()
         send_register_email(self.object.email)
-        messages.success(self.request, f'{User.email} вы успешно зарегистрировались!!')
+        messages.success(self.request, f'{self.object.email} вы успешно зарегистрировались!!')
         return super().form_valid(form)
 
 
