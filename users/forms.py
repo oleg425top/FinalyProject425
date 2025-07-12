@@ -65,6 +65,7 @@ class UserChangePasswordForm(StyleFormMixin, PasswordChangeForm):
 
 
 class ContactsForm(forms.Form):
+    """ Форма для обработки контактных сообщений с полями для имени, email и сообщения. """
     name = forms.CharField(
         min_length=2,
         widget=forms.TextInput(

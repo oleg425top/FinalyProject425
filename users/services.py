@@ -18,6 +18,7 @@ def send_register_email(email):
 
 
 def send_new_password(email):
+    """ Отправляет письмо с уведомлением об изменении пароля на указанный адрес электронной почты. """
     send_mail(
         subject='Вы успешно изменили пароль',
         message=f'Ваш пароль был изменен',
@@ -42,4 +43,5 @@ def send_order_email(email):
 
 
 def send_message(name, email, message):
+    """ Пока просто заглушка. """
     pass

@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 
 
 def validate_card_number(value):
+    """Проверяет, что номер карты состоит из 16 цифр."""
     if not value.isdigit():
         raise ValidationError("Номер карты должен содержать только цифры.")
     if len(value) != 16:
@@ -12,6 +13,7 @@ def validate_card_number(value):
 
 
 def validate_expiry_date(value):
+    """Проверяет, что срок действия карты в формате MM/YY и не истёк."""
     if not re.match(r'^\d{2}/\d{2}$', value):
         raise ValidationError("Срок действия должен быть в формате MM/YY.")
 
@@ -31,6 +33,7 @@ def validate_expiry_date(value):
 
 
 def validate_cvv(value):
+    """Проверяет, что CVV состоит из 3 или 4 цифр."""
     if not value.isdigit():
         raise ValidationError("CVV должен содержать только цифры.")
     if len(value) not in [3, 4]:
