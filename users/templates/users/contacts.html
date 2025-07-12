@@ -1,15 +1,19 @@
 {% extends 'users/base.html' %}
 
 {% block content %}
-<body>
 <!--== Начало области контактов ==-->
 <section class="contact-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
                 <div class="contact-form">
-                    <form class="contact-form-wrapper" id="contact-form"
-                          action="http://whizthemes.com/mail-php/raju/arden/mail.php" method="post">
+                    <form class="contact-form-wrapper" action="" method="post">
+                        {% csrf_token %}
+                        {% if success %}
+                        <div class="alert alert-success">
+                            <strong>Спасибо за сообщение!</strong>
+                        </div>
+                        {% endif %}
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="section-title">
@@ -21,26 +25,33 @@
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-md-6">
+                                        {% if form.name.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ form.name.errors }}</strong>
+                                        </div>
+                                        {% endif %}
                                         <div class="form-group">
-                                            <input class="form-control" type="text" name="con_name"
-                                                   placeholder="Ваше имя *">
+                                            {{ form.name }}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                        {% if form.email.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ form.email.errors }}</strong>
+                                        </div>
+                                        {% endif %}
                                         <div class="form-group">
-                                            <input class="form-control" type="email" name="con_email"
-                                                   placeholder="Ваш email *">
+                                            {{ form.email }}
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input class="form-control" type="text" name="con_phone" placeholder="Тема">
+                                        {% if form.message.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ form.message.errors }}</strong>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
+                                        {% endif %}
                                         <div class="form-group mb-0">
-                                            <textarea class="form-control textarea" name="con_message"
-                                                      placeholder="Введите ваше сообщение здесь.."></textarea>
+                                            {{ form.message }}
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -89,7 +100,6 @@
                 </div>
             </div>
         </div>
-
         <!-- НЕ ТРОГАТЬ: Блок с Google Maps -->
         <div class="row">
             <div class="col-12">
@@ -101,97 +111,8 @@
             </div>
         </div>
         <!-- КОНЕЦ блока с Google Maps -->
-
     </div>
 </section>
 <!--== Конец области контактов ==-->
 </main>
-
-<!--== Кнопка вверх ==-->
-<div class="scroll-to-top"><span class="fa fa-angle-double-up"></span></div>
-
-<!--== Быстрый просмотр товара ==-->
-<aside class="product-quick-view-modal">
-    <div class="product-quick-view-inner">
-        <div class="product-quick-view-content">
-            <button type="button" class="btn-close">
-                <span class="close-icon"><i class="ti-close"></i></span>
-            </button>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-12">
-                    <div class="thumb">
-                        <img src="assets/img/shop/quick-view1.webp" alt="Alan-Shop">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                    <div class="content">
-                        <h4 class="title">1. Новый товар с меткой «распродажа»</h4>
-                        <div class="prices">
-                            <del class="price-old">$167.540</del>
-                            <span class="price">$141.76</span>
-                        </div>
-                        <p>Вопреки распространённому мнению, Lorem Ipsum — это не просто случайный текст. Он имеет корни
-                            в произведении классической латинской литературы 45 года до н.э., что делает его более чем
-                            2000 лет старым. Ричард МакКлинток, профессор латинского языка из колледжа Хэмпден-Сидни в
-                            Вирджинии,</p>
-                        <div class="quick-view-select">
-                            <div class="quick-view-select-item">
-                                <label for="forSize" class="form-label">Размер:</label>
-                                <select class="form-select" id="forSize" required>
-                                    <option selected value="">s</option>
-                                    <option>m</option>
-                                    <option>l</option>
-                                    <option>xl</option>
-                                </select>
-                            </div>
-                            <div class="quick-view-select-item">
-                                <label for="forColor" class="form-label">Цвет:</label>
-                                <select class="form-select" id="forColor" required>
-                                    <option selected value="">красный</option>
-                                    <option>зелёный</option>
-                                    <option>синий</option>
-                                    <option>жёлтый</option>
-                                    <option>белый</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="action-top">
-                            <div class="pro-qty">
-                                <input type="text" id="quantity2" title="Количество" value="1"/>
-                            </div>
-                            <button class="btn btn-black">Добавить в корзину</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="canvas-overlay"></div>
-</aside>
-<!--== Конец быстрого просмотра ==-->
-
-<!--== Боковое меню ==-->
-<aside class="off-canvas-wrapper">
-    <div class="off-canvas-inner">
-        <div class="off-canvas-overlay"></div>
-        <div class="off-canvas-content">
-            <div class="off-canvas-header">
-                <div class="logo-area">
-                    <a href="index.html"><img src="assets/img/logo.png" alt="Логотип"/></a>
-                </div>
-                <div class="close-action">
-                    <button class="btn-close"><i class="fa fa-close"></i></button>
-                </div>
-            </div>
-            <div class="off-canvas-item">
-                <div class="res-mobile-menu menu-active-one">
-                    <!-- Содержимое формируется автоматически jQuery -->
-                </div>
-            </div>
-            <div class="off-canvas-footer"></div>
-        </div>
-    </div>
-</aside>
-<!--== Конец бокового меню ==-->
-</div>
 {% endblock %}
