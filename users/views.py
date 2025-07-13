@@ -1,10 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView, LoginView, PasswordChangeView
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView, UpdateView, TemplateView, View
 from django.urls import reverse_lazy
 
-from users.models import User
+from users.models import User, PrivacyPolicy
 from users.forms import UserRegisterForm, UserLoginForm, UserForm, UserUpdateForm, UserChangePasswordForm, ContactsForm
 from users.services import send_register_email, send_new_password, send_message
 
@@ -137,3 +137,9 @@ class UserPasswordChangeView(PasswordChangeView):
         user = form.save()
         send_new_password(user.email)
         return super().form_valid(form)
+
+
+def privacy_policy_view(request):
+    """Выводит страницу политики конфиденциальности."""
+    policy = get_object_or_404(PrivacyPolicy)
+    return render(request, 'users/privacy_policy.html', {'policy': policy})

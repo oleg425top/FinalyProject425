@@ -35,3 +35,18 @@ class User(AbstractUser):
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
         ordering = ['id']
+
+
+class PrivacyPolicy(models.Model):
+    """Модель для хранения текста политики конфиденциальности."""
+    title = models.CharField(max_length=255, default="Политика конфиденциальности")
+    content = models.TextField()
+    last_updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        """Возвращает заголовок политики конфиденциальности."""
+        return self.title
+
+    class Meta:
+        verbose_name = 'Политика конфиденциальности'
+        verbose_name_plural = 'Политика конфиденциальности'

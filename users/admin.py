@@ -1,10 +1,8 @@
 from django.contrib import admin
 from carts.admin import CartTabAdmin
 from orders.admin import OrderTabularAdmin
-from users.models import User
+from users.models import User, PrivacyPolicy
 
-
-# admin.site.register(User)
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
@@ -14,3 +12,6 @@ class UserAdmin(admin.ModelAdmin):
     search_fields = ('email',)
 
     inlines = [CartTabAdmin, OrderTabularAdmin]
+
+
+admin.site.register(PrivacyPolicy)
