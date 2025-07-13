@@ -106,6 +106,14 @@
                     <div class="cart-buttons">
                         <button type="submit" class="btn  btn-shopping">Оформить заказ</button>
                     </div>
+                    <div class="text-center mt-4">
+                        <small class="text-muted fs-5">
+                            Нажимая "Оформить заказ", вы принимаете
+                            <a href="{% url 'users:privacy_policy' %}" target="_blank"
+                               class="text-decoration-underline">
+                                Политику конфиденциальности
+                            </a>.
+                        </small>
                 </form>
             </div>
         </div>

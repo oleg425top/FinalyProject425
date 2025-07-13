@@ -1,11 +1,6 @@
 {% extends 'users/index.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+
 <body>
     <div class="row">
         <div class="col-md-3 col-sm-2"></div>
@@ -23,7 +18,14 @@
                             </div>
                         </div>
                     </form>
-            </div>
+
+                    <div class="text-center mt-3">
+                        <small class="text-muted">
+                            Нажимая "Зарегистрироваться", вы принимаете
+                            <a href="{% url 'users:privacy_policy' %}" target="_blank">Политику конфиденциальности</a>.
+                        </small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

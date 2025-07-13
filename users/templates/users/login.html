@@ -13,13 +13,18 @@
                     <button type="submit" class="btn btn-success">Войти</button>
                 </form>
                 <div class="col-md-12">
-                    <div class="form-group mb-0">
+                    <div class="form-group mb-2">
                         <a class="btn-create" href="{% url 'users:register' %}">Регистрация</a>
                     </div>
+                </div>
+                <div class="text-center mt-3">
+                    <small class="text-muted">
+                        Нажимая "Войти", вы соглашаетесь с
+                        <a href="{% url 'users:privacy_policy' %}" target="_blank">Политикой конфиденциальности</a>.
+                    </small>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-{% endblock%}
+{% endblock %}

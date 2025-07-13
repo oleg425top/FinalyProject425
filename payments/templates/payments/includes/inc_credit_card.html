@@ -29,9 +29,19 @@
             </div>
             <button type="submit" class="btn btn-warning mt-3">Оплатить</button>
         </form>
+
+        <!-- Ссылка на политику конфиденциальности -->
+        <div class="text-center mt-4">
+            <small class="text-muted">
+                Совершая оплату, вы соглашаетесь с
+                <a href="{% url 'users:privacy_policy' %}" target="_blank" class="text-decoration-underline">Политикой
+                    конфиденциальности</a>.
+            </small>
+        </div>
     </div>
 </div>
 </body>
+
 
 
 
